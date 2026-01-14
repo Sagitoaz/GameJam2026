@@ -3,55 +3,46 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [Header("Components")]
-    private Rigidbody2D _rb;
-    [SerializeField] private GroundDetector _groundDetector;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private GroundDetector groundDetector;
 
-    [Header("Attributes")]
-    [SerializeField] private float _moveSpeed = 5f;
-    public float MoveSpeed => _moveSpeed;
-    [SerializeField] private float _jumpForce = 12f;
+    private Rigidbody2D rb;
+    private Vector2 moveInput;
+    public PlayerState State { get;  private set; } = PlayerState.Separate;
 
-    [Header("Input System")]
-    private PlayerController _playerController;
-    private InputAction _move;
-    private Vector2 _moveDirection;
-    private InputAction _jump;
-    private bool _isJumpPressed;
-    public float JumpForce => _jumpForce;
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _playerController = new PlayerController();
+        rb = GetComponent<Rigidbody2D>();
     }
-    private void OnEnable()
-    {
-        _move = _playerController.Player.Move;
-        _move.Enable();
-        _jump = _playerController.Player.Jump;
-        _jump.Enable();
-    }
-    private void Update()
-    {
-        _moveDirection = _move.ReadValue<Vector2>();
 
-        _isJumpPressed = _jump.WasPressedThisFrame();
-        
-        if (_isJumpPressed && _groundDetector.IsGrounded)
-        {
-            _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, _jumpForce);
-            _isJumpPressed = false;
-        }
-        
-        _rb.linearVelocity = new Vector2(_moveDirection.x * _moveSpeed, _rb.linearVelocity.y);
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        if (State == PlayerState.Merged) return;
+        moveInput = context.ReadValue<Vector2>();
     }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (State == PlayerState.Merged) return;
+        if (context.performed && groundDetector.IsGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+    }
+
     private void FixedUpdate()
     {
-        _groundDetector?.Check();
+        if (State == PlayerState.Merged) return;
+        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        groundDetector.Check();
     }
-    private void OnDisable()
+    
+    public void SetMerged()
     {
-        _move.Disable();
-        _jump.Disable();
+        State = PlayerState.Merged;
+        // rb.linearVelocity = Vector2.zero;
+        // rb.simulated = false;    
+        gameObject.SetActive(false);
     }
 }
