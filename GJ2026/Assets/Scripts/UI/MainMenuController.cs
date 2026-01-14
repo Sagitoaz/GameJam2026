@@ -92,7 +92,7 @@ public class MainMenuController : MonoBehaviour
         if (loadingPanel != null) loadingPanel.SetActive(true);
         yield return new WaitForSeconds(loadingTime);
 
-        SceneManager.LoadScene("Scene1"); 
+        SceneManager.LoadScene("LevelSelect"); 
     }
 
     public void QuitGame() { Application.Quit(); }
