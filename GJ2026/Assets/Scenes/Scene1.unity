@@ -174,6 +174,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 12
   groundDetector: {fileID: 411057690}
+  canShow: 1
 --- !u!114 &411057692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -318,7 +319,7 @@ Transform:
   m_GameObject: {fileID: 411057689}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.05, y: -0.4, z: 0}
+  m_LocalPosition: {x: 6.22, y: -0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -488,7 +489,7 @@ Transform:
   m_GameObject: {fileID: 618353744}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -778,8 +779,8 @@ Transform:
   m_GameObject: {fileID: 801459161}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3, z: 0}
-  m_LocalScale: {x: 24.6652, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -5.4969, z: 0}
+  m_LocalScale: {x: 24.6652, y: 5.9937, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -1083,7 +1084,7 @@ Transform:
   m_GameObject: {fileID: 1095798714}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1101,7 +1102,6 @@ GameObject:
   - component: {fileID: 1187746009}
   - component: {fileID: 1187746010}
   - component: {fileID: 1187746011}
-  - component: {fileID: 1187746014}
   - component: {fileID: 1187746012}
   - component: {fileID: 1187746013}
   m_Layer: 0
@@ -1120,7 +1120,7 @@ Transform:
   m_GameObject: {fileID: 1187746006}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -6.2, y: 11.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1258,22 +1258,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 85329a18-b69b-49be-8214-fc5790119d42
     m_ActionName: 'Player/Jump[/Keyboard/w]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1187746014}
-        m_TargetAssemblyTypeName: PlayerMergeController, Assembly-CSharp
-        m_MethodName: OnMerge
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 6c4ab9f2-bede-402e-8627-f0a19e696b72
-    m_ActionName: 'Player/Merge[/Keyboard/e]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1294,6 +1278,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 12
   groundDetector: {fileID: 1187746013}
+  canShow: 1
 --- !u!114 &1187746013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1313,22 +1298,6 @@ MonoBehaviour:
     m_Bits: 64
   _offsetY: 0.04
   _drawGizmos: 1
---- !u!114 &1187746014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1187746006}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4910855a601196469962a1105108244, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMergeController
-  _player1: {fileID: 1187746012}
-  _player2: {fileID: 411057691}
-  _playerVertical: {fileID: 2057119994}
-  _mergeSpeed: 5
 --- !u!1 &1215949165
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,12 +1424,10 @@ GameObject:
   - component: {fileID: 1541482688}
   - component: {fileID: 1541482687}
   - component: {fileID: 1541482686}
-  - component: {fileID: 1541482685}
-  - component: {fileID: 1541482684}
   - component: {fileID: 1541482683}
   - component: {fileID: 1541482682}
   m_Layer: 0
-  m_Name: PlayerMergeHorizontal
+  m_Name: PlayerMergeVertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1500,36 +1467,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 12
   groundDetector: {fileID: 1541482682}
---- !u!114 &1541482684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541482681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e8b263b149f814cb3238ec33380d02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerGameMode
-  _playerVertical: {fileID: 2057119994}
-  _playerHorizontal: {fileID: 1541482683}
---- !u!114 &1541482685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1541482681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4910855a601196469962a1105108244, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerMergeController
-  _player1: {fileID: 1187746012}
-  _player2: {fileID: 411057691}
-  _playerVertical: {fileID: 2057119994}
-  _mergeSpeed: 10
+  canShow: 0
 --- !u!114 &1541482686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1587,38 +1525,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 85329a18-b69b-49be-8214-fc5790119d42
     m_ActionName: 'Player/Jump[/Keyboard/upArrow]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1541482685}
-        m_TargetAssemblyTypeName: PlayerMergeSplitController, Assembly-CSharp
-        m_MethodName: OnMerge
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: b2664281-4212-4b81-b061-ff001f1a33b8
-    m_ActionName: 'Player/Split[/Keyboard/e]'
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1541482684}
-        m_TargetAssemblyTypeName: PlayerGameMode, Assembly-CSharp
-        m_MethodName: OnChangeMode
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 3a2b43dc-0c20-496c-a0a9-11f673d49f0f
-    m_ActionName: 'Player/ChangeMode[/Keyboard/q]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -1739,11 +1645,58 @@ Transform:
   m_GameObject: {fileID: 1902420613}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1187746008}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2052097663
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2052097665}
+  - component: {fileID: 2052097664}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2052097664
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052097663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d68d8f605b5c1304a88eace34f2c9f2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  dontDestroyOnLoad: 0
+  playerMode: 2
+  currentGameMode: {fileID: 0}
+--- !u!4 &2052097665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2052097663}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.8642, y: 1.67258, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2057119992
 GameObject:
@@ -1762,7 +1715,7 @@ GameObject:
   - component: {fileID: 2057119994}
   - component: {fileID: 2057119993}
   m_Layer: 0
-  m_Name: PlayerMergeVertical
+  m_Name: PlayerMergeHorizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1802,6 +1755,7 @@ MonoBehaviour:
   moveSpeed: 5
   jumpForce: 12
   groundDetector: {fileID: 2057119993}
+  canShow: 0
 --- !u!114 &2057119995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1968,7 +1922,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!4 &2057119998
 Transform:
   m_ObjectHideFlags: 0
@@ -2000,8 +1954,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMergeController
   _player1: {fileID: 1187746012}
   _player2: {fileID: 411057691}
-  _playerVertical: {fileID: 2057119994}
-  _mergeSpeed: 10
+  _playerVertical: {fileID: 1541482683}
+  _playerHorizontal: {fileID: 2057119994}
 --- !u!114 &2057120000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2014,8 +1968,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13e8b263b149f814cb3238ec33380d02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerGameMode
-  _playerVertical: {fileID: 2057119994}
-  _playerHorizontal: {fileID: 1541482683}
+  _playerVertical: {fileID: 1541482683}
+  _playerHorizontal: {fileID: 2057119994}
 --- !u!1 &2132277429
 GameObject:
   m_ObjectHideFlags: 0
@@ -2041,7 +1995,7 @@ Transform:
   m_GameObject: {fileID: 2132277429}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2053,6 +2007,7 @@ SceneRoots:
   m_Roots:
   - {fileID: 519420032}
   - {fileID: 619394802}
+  - {fileID: 2052097665}
   - {fileID: 801459163}
   - {fileID: 1187746008}
   - {fileID: 411057695}

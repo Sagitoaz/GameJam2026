@@ -109,24 +109,6 @@ public partial class @PlayerController3: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Split"",
-                    ""type"": ""Button"",
-                    ""id"": ""b2664281-4212-4b81-b061-ff001f1a33b8"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChangeMode"",
-                    ""type"": ""Button"",
-                    ""id"": ""3a2b43dc-0c20-496c-a0a9-11f673d49f0f"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -171,28 +153,6 @@ public partial class @PlayerController3: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""47ced425-50d4-41bd-aaff-24ec277f94cf"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Split"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fd8825c7-83f9-45dd-9dca-9be606c6dd17"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChangeMode"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -266,8 +226,6 @@ public partial class @PlayerController3: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Split = m_Player.FindAction("Split", throwIfNotFound: true);
-        m_Player_ChangeMode = m_Player.FindAction("ChangeMode", throwIfNotFound: true);
     }
 
     ~@PlayerController3()
@@ -350,8 +308,6 @@ public partial class @PlayerController3: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Split;
-    private readonly InputAction m_Player_ChangeMode;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -371,14 +327,6 @@ public partial class @PlayerController3: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "Player/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Split".
-        /// </summary>
-        public InputAction @Split => m_Wrapper.m_Player_Split;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/ChangeMode".
-        /// </summary>
-        public InputAction @ChangeMode => m_Wrapper.m_Player_ChangeMode;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -411,12 +359,6 @@ public partial class @PlayerController3: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @Split.started += instance.OnSplit;
-            @Split.performed += instance.OnSplit;
-            @Split.canceled += instance.OnSplit;
-            @ChangeMode.started += instance.OnChangeMode;
-            @ChangeMode.performed += instance.OnChangeMode;
-            @ChangeMode.canceled += instance.OnChangeMode;
         }
 
         /// <summary>
@@ -434,12 +376,6 @@ public partial class @PlayerController3: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @Split.started -= instance.OnSplit;
-            @Split.performed -= instance.OnSplit;
-            @Split.canceled -= instance.OnSplit;
-            @ChangeMode.started -= instance.OnChangeMode;
-            @ChangeMode.performed -= instance.OnChangeMode;
-            @ChangeMode.canceled -= instance.OnChangeMode;
         }
 
         /// <summary>
@@ -559,19 +495,5 @@ public partial class @PlayerController3: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Split" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSplit(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "ChangeMode" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeMode(InputAction.CallbackContext context);
     }
 }
