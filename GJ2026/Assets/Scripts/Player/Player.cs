@@ -5,11 +5,10 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private float jumpForce = 8f;
     [SerializeField] private GroundDetector groundDetector;
     [SerializeField] private bool canShow;
     private SpriteRenderer sprite;
-
     private Rigidbody2D rb;
     private BoxCollider2D col;
     private Vector2 moveInput;
@@ -31,13 +30,13 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (State == PlayerState.Stay) return;
+        if (State == PlayerState.Free) return;
         moveInput = context.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (State == PlayerState.Stay) return;
+        if (State == PlayerState.Free) return;
         if (context.performed && groundDetector.IsGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -46,7 +45,7 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (State == PlayerState.Stay || isKnockback) return;
+        if (State == PlayerState.Free || isKnockback) return;
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
         groundDetector.Check();
     }
@@ -66,7 +65,7 @@ public class Player : MonoBehaviour
 
     public void SetHide()
     {
-        State = PlayerState.Stay;
+        State = PlayerState.Free;
         rb.simulated = false;
         col.enabled = false;
         sprite.enabled = false;
