@@ -1,35 +1,40 @@
 using System.Collections;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-class PlayerMergeSplitController : MonoBehaviour
+public class PlayerMergeSplitController : MonoBehaviour
 {
+    [Header("Player References")]
     [SerializeField] private Player _player1;
     [SerializeField] private Player _player2;
     [SerializeField] private Player _playerVertical;
     [SerializeField] private Player _playerHorizontal;
-    private float _mergeSpeed = 15f;
-    private float _splitForceP1 = 10f;
-    private float _splitForceP2 = 50f;
-    private float _splitForceVertical = 20f;
-    private float _width;
-    private float _height;
-    private float _diagonal;
+    
+    [Header("Merge Settings")]
+    [SerializeField] private float _maxMergeDistance = 8f;
+    [SerializeField] private float _mergeSpeed = 15f;
+    
+    [Header("Split Settings")]
+    [SerializeField] private float _splitForceP1 = 10f;
+    [SerializeField] private float _splitForceP2 = 50f;
+    [SerializeField] private float _splitForceVertical = 20f;
+    [SerializeField] private float _splitNoGravityDuration = 0.3f;
 
-    private BoxCollider2D _colPlayer1, _colPlayer2, _colPlayerHorizontal, _colPlayerVertical;
+    private float _width, _height, _diagonal;
+    private BoxCollider2D _colPlayer1, _colPlayer2;
     private Rigidbody2D _rbPlayer1, _rbPlayer2;
-    MergeState _state = MergeState.Separate;
+    private LayerMask _groundMask;
+    private MergeState _state = MergeState.Separate;
 
     private void Awake()
     {
         _colPlayer1 = _player1.GetComponent<BoxCollider2D>();
         _colPlayer2 = _player2.GetComponent<BoxCollider2D>();
-        _colPlayerHorizontal = _playerVertical.GetComponent<BoxCollider2D>();
-        _colPlayerVertical = _playerHorizontal.GetComponent<BoxCollider2D>();
         _rbPlayer1 = _player1.GetComponent<Rigidbody2D>();
         _rbPlayer2 = _player2.GetComponent<Rigidbody2D>();
+        _groundMask = LayerMask.GetMask("Ground");
     }
+
     private void Start()
     {
         _width = _colPlayer1.bounds.extents.x;
@@ -38,32 +43,49 @@ class PlayerMergeSplitController : MonoBehaviour
     }
     public void OnMerge(InputAction.CallbackContext context)
     {
-        Debug.Log(_state.ToString());
         if (!context.performed) return;
-        if (_state == MergeState.Separate && Vector2.Distance(_player1.transform.position, _player2.transform.position) <= 2f)
+        
+        if (_state == MergeState.Separate && CanMerge())
         {
             _state = MergeState.Merging;
             GameManager.Instance.PlayerMode = PlayerMode.None;
             StartCoroutine(MergeRoutine());
         }
-        else if(_state == MergeState.Merged)
+        else if (_state == MergeState.Merged)
         {
             _state = MergeState.Separate;
             Split();
         }
     }
 
-    IEnumerator MergeRoutine()
+    private bool CanMerge()
     {
-        Vector3 midpoint = (_player1.transform.position + _player2.transform.position) / 2f;
+        Vector3 pos1 = _player1.transform.position;
+        Vector3 pos2 = _player2.transform.position;
+        float distance = Vector2.Distance(pos1, pos2);
+        
+        if (distance > _maxMergeDistance) return false;
+        
+        Vector2 direction = (pos2 - pos1).normalized;
+        RaycastHit2D hit = Physics2D.Raycast(pos1, direction, distance, _groundMask);
+        
+        Debug.DrawLine(pos1, pos2, hit.collider != null ? Color.red : Color.green, 0.5f);
+        
+        return hit.collider == null;
+    }
+
+    private IEnumerator MergeRoutine()
+    {
+        Vector3 midpoint = (_player1.transform.position + _player2.transform.position) * 0.5f;
 
         _rbPlayer1.simulated = false;
         _rbPlayer2.simulated = false;
 
         while (Vector2.Distance(_player1.transform.position, midpoint) >= _diagonal)
         {
-            _player1.transform.position = Vector3.MoveTowards(_player1.transform.position, midpoint, _mergeSpeed * Time.deltaTime);
-            _player2.transform.position = Vector3.MoveTowards(_player2.transform.position, midpoint, _mergeSpeed * Time.deltaTime);
+            float step = _mergeSpeed * Time.deltaTime;
+            _player1.transform.position = Vector3.MoveTowards(_player1.transform.position, midpoint, step);
+            _player2.transform.position = Vector3.MoveTowards(_player2.transform.position, midpoint, step);
             yield return null;
         }
 
@@ -72,9 +94,8 @@ class PlayerMergeSplitController : MonoBehaviour
 
         GameManager.Instance.PlayerMode = PlayerMode.Horizontal;
         GameManager.Instance.CurrentGameMode = _playerHorizontal;
-
-        GameManager.Instance.CurrentGameMode.SetShow();
         GameManager.Instance.CurrentGameMode.transform.position = midpoint;
+        GameManager.Instance.CurrentGameMode.SetShow();
 
         _state = MergeState.Merged;
     }
@@ -124,49 +145,17 @@ class PlayerMergeSplitController : MonoBehaviour
 
     private void SplitVertical()
     {
-        Player topPlayer;
-        if (_player1.transform.position.y >= _player2.transform.position.y)
-        {
-            topPlayer = _player1;
-        }
-        else
-        {
-            topPlayer = _player2;
-        }
-
-        Rigidbody2D rbTop = topPlayer.GetComponent<Rigidbody2D>();
-        rbTop.linearVelocity = Vector2.zero;
-        rbTop.AddForce(Vector2.up * _splitForceVertical, ForceMode2D.Impulse);
+        Player topPlayer = _player1.transform.position.y >= _player2.transform.position.y ? _player1 : _player2;
+        Player bottomPlayer = topPlayer == _player1 ? _player2 : _player1;
+        
+        topPlayer.ApplyKnockbackNoGravity(Vector2.up * _splitForceVertical, _splitNoGravityDuration);
+        bottomPlayer.ApplyKnockbackNoGravity(Vector2.down * _splitForceVertical * 0.5f, _splitNoGravityDuration);
     }
 
     private void SplitHorizontal()
     {
-        _player1.ApplyKnockback(Vector2.left * _splitForceP1);
-        _player2.ApplyKnockback(Vector2.right * _splitForceP2);
-    }
-
-    private Vector3 FindSafeMergePosition(Vector3 desiredPos)
-    {
-        Vector2 size = _colPlayerHorizontal.bounds.size;
-        LayerMask groundMask = LayerMask.GetMask("Ground");
-
-        // Nếu vị trí hiện tại không kẹt → dùng luôn
-        if (!Physics2D.OverlapBox(desiredPos, size, 0f, groundMask))
-            return desiredPos;
-
-        // Thử đẩy lên trên từng bước nhỏ
-        const float step = 0.05f;
-        const int maxTry = 20;
-
-        for (int i = 1; i <= maxTry; i++)
-        {
-            Vector3 checkPos = desiredPos + Vector3.up * step * i;
-            if (!Physics2D.OverlapBox(checkPos, size, 0f, groundMask))
-                return checkPos;
-        }
-
-        // Fallback: trả về vị trí ban đầu (hiếm)
-        return desiredPos;
+        _player1.ApplyKnockbackNoGravity(Vector2.left * _splitForceP1, _splitNoGravityDuration);
+        _player2.ApplyKnockbackNoGravity(Vector2.right * _splitForceP2, _splitNoGravityDuration);
     }
 
 }

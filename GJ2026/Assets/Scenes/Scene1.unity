@@ -6271,6 +6271,12 @@ MonoBehaviour:
   _player2: {fileID: 411057691}
   _playerVertical: {fileID: 1541482683}
   _playerHorizontal: {fileID: 2057119994}
+  _maxMergeDistance: 8
+  _mergeSpeed: 15
+  _splitForceP1: 10
+  _splitForceP2: 30
+  _splitForceVertical: 20
+  _splitNoGravityDuration: 0.3
 --- !u!114 &2057120000
 MonoBehaviour:
   m_ObjectHideFlags: 0
