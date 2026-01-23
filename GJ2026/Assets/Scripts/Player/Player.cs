@@ -112,7 +112,7 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Trap") || other.CompareTag("Spike"))
+        if (other.CompareTag("Trap"))
         {
             GameManager.Instance.TriggerEndGame();
         }
