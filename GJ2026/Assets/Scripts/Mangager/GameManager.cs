@@ -1,10 +1,10 @@
 public class GameManager : Singleton<GameManager>
 {
-    public PlayerMode playerMode;
-    public Player currentGameMode;
+    public PlayerMode PlayerMode;
+    public Player CurrentGameMode;
 
     private void Start()
     {
-        playerMode = PlayerMode.None;
+        PlayerMode = PlayerMode.None;
     }
 }
