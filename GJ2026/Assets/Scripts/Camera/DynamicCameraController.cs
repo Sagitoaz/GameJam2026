@@ -77,44 +77,33 @@ public class DynamicCameraController : MonoBehaviour
     {
         if (player1 == null || player2 == null) return;
         
-        // Nếu đang merged, chỉ follow merged player, không split
-        if (GameManager.Instance.PlayerMode != PlayerMode.None)
+        // Check trạng thái merge/separate từ GameManager
+        bool shouldBeMerged = GameManager.Instance.PlayerMode != PlayerMode.None;
+        
+        // Trigger transition khi thay đổi trạng thái
+        if (shouldBeMerged != !isSplit)
         {
-            isSplit = false;
-            splitTransition = 0f;
-            UpdateMergedCamera();
-            return;
+            isSplit = !shouldBeMerged;
         }
         
-        // Chỉ split khi 2 player separate
-        float distance = Vector2.Distance(player1.position, player2.position);
-        
-        // Hysteresis: tránh flicker giữa split/merge
-        if (!isSplit && distance > splitDistance)
-        {
-            isSplit = true;
-        }
-        else if (isSplit && distance < mergeDistance)
-        {
-            isSplit = false;
-        }
-        
-        // Smooth transition
+        // Smooth transition với wipe effect
         float targetTransition = isSplit ? 1f : 0f;
-        splitTransition = Mathf.Lerp(splitTransition, targetTransition, splitTransitionSpeed * Time.deltaTime);
+        splitTransition = Mathf.MoveTowards(splitTransition, targetTransition, splitTransitionSpeed * Time.deltaTime);
         
-        if (splitTransition < 0.1f)
+        if (splitTransition <= 0.01f)
         {
+            // Hoàn toàn merged
             UpdateMergedCamera();
         }
-        else if (splitTransition > 0.9f)
+        else if (splitTransition >= 0.99f)
         {
+            // Hoàn toàn split
             UpdateSplitCamera();
         }
         else
         {
-            // Đang transition
-            UpdateTransitionCamera();
+            // Đang transition với wipe effect
+            UpdateWipeTransition();
         }
     }
     
@@ -180,14 +169,38 @@ public class DynamicCameraController : MonoBehaviour
         FollowPlayer(player2Camera, player2.position, ref player2CamVelocity);
     }
     
-    private void UpdateTransitionCamera()
+    private void UpdateWipeTransition()
     {
-        // Smooth transition: dùng merged camera nhưng adjust zoom
-        mainCamera.enabled = true;
-        player1Camera.enabled = false;
-        player2Camera.enabled = false;
+        // Hiển thị cả 2 camera trong quá trình transition
+        mainCamera.enabled = false;
+        player1Camera.enabled = true;
+        player2Camera.enabled = true;
         
-        UpdateMergedCamera();
+        // Animate wipe effect
+        if (isSplit)
+        {
+            // Đang transition từ merged → split
+            // Bắt đầu từ full screen, dần chia nhỏ
+            float progress = splitTransition;
+            float leftWidth = Mathf.Lerp(1f, 0.5f, progress);
+            
+            player1Camera.rect = new Rect(0, 0, leftWidth, 1f);
+            player2Camera.rect = new Rect(leftWidth, 0, 1f - leftWidth, 1f);
+        }
+        else
+        {
+            // Đang transition từ split → merged
+            // Mở rộng 1 bên, thu nhỏ bên kia
+            float progress = 1f - splitTransition;
+            float leftWidth = Mathf.Lerp(0.5f, 1f, progress);
+            
+            player1Camera.rect = new Rect(0, 0, leftWidth, 1f);
+            player2Camera.rect = new Rect(leftWidth, 0, 1f - leftWidth, 1f);
+        }
+        
+        // Follow player trong quá trình transition
+        FollowPlayer(player1Camera, player1.position, ref player1CamVelocity);
+        FollowPlayer(player2Camera, player2.position, ref player2CamVelocity);
     }
     
     private void FollowPlayer(Camera cam, Vector3 targetPos, ref Vector3 velocity)
@@ -234,12 +247,24 @@ public class DynamicCameraController : MonoBehaviour
     
     private void OnGUI()
     {
-        if (!isSplit || splitTransition < 0.5f) return;
+        if (splitTransition <= 0.01f) return; // Không vẽ khi hoàn toàn merged
         
-        // Vẽ vertical split line (dọc)
+        // Vẽ wipe line
         GUI.color = splitLineColor;
         
-        float lineX = Screen.width * 0.5f - Screen.width * splitLineThickness * 0.5f;
+        float linePosition;
+        if (isSplit)
+        {
+            // Split: line di chuyển từ trái sang giữa
+            linePosition = Mathf.Lerp(0f, 0.5f, splitTransition);
+        }
+        else
+        {
+            // Merge: line di chuyển từ giữa sang phải
+            linePosition = Mathf.Lerp(0.5f, 1f, 1f - splitTransition);
+        }
+        
+        float lineX = Screen.width * linePosition - Screen.width * splitLineThickness * 0.5f;
         GUI.DrawTexture(
             new Rect(lineX, 0, Screen.width * splitLineThickness, Screen.height),
             Texture2D.whiteTexture
