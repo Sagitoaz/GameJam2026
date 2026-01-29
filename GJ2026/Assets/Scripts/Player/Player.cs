@@ -1,57 +1,87 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [Header("Components")]
-    private Rigidbody2D _rb;
-    [SerializeField] private GroundDetector _groundDetector;
+    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private float jumpForce = 12f;
+    [SerializeField] private GroundDetector groundDetector;
+    [SerializeField] private bool canShow;
+    private SpriteRenderer sprite;
 
-    [Header("Attributes")]
-    [SerializeField] private float _moveSpeed = 5f;
-    public float MoveSpeed => _moveSpeed;
-    [SerializeField] private float _jumpForce = 12f;
+    private Rigidbody2D rb;
+    private BoxCollider2D col;
+    private Vector2 moveInput;
+    private bool isKnockback;
+    public PlayerState State { get;  private set; } = PlayerState.Control;
 
-    [Header("Input System")]
-    private PlayerController _playerController;
-    private InputAction _move;
-    private Vector2 _moveDirection;
-    private InputAction _jump;
-    private bool _isJumpPressed;
-    public float JumpForce => _jumpForce;
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody2D>();
-        _playerController = new PlayerController();
+        rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<BoxCollider2D>();
+        sprite = GetComponentInChildren<SpriteRenderer>();
     }
-    private void OnEnable()
-    {
-        _move = _playerController.Player.Move;
-        _move.Enable();
-        _jump = _playerController.Player.Jump;
-        _jump.Enable();
-    }
-    private void Update()
-    {
-        _moveDirection = _move.ReadValue<Vector2>();
 
-        _isJumpPressed = _jump.WasPressedThisFrame();
-        
-        if (_isJumpPressed && _groundDetector.IsGrounded)
-        {
-            _rb.linearVelocity = new Vector2(_rb.linearVelocity.x, _jumpForce);
-            _isJumpPressed = false;
-        }
-        
-        _rb.linearVelocity = new Vector2(_moveDirection.x * _moveSpeed, _rb.linearVelocity.y);
+    private void Start()
+    {
+        if (canShow) SetShow();
+        else SetHide();
     }
+
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        if (State == PlayerState.Stay) return;
+        moveInput = context.ReadValue<Vector2>();
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        if (State == PlayerState.Stay) return;
+        if (context.performed && groundDetector.IsGrounded)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+        }
+    }
+
     private void FixedUpdate()
     {
-        _groundDetector?.Check();
+        if (State == PlayerState.Stay || isKnockback) return;
+        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        groundDetector.Check();
     }
-    private void OnDisable()
+
+    public void ApplyKnockback(Vector2 velocity)
     {
-        _move.Disable();
-        _jump.Disable();
+        isKnockback = true;
+        rb.linearVelocity = velocity;
+        StartCoroutine(EndKnockback());
+    }
+
+    IEnumerator EndKnockback()
+    {
+        yield return new WaitForSeconds(0.15f);
+        isKnockback = false;
+    }
+
+    public void SetHide()
+    {
+        State = PlayerState.Stay;
+        rb.simulated = false;
+        col.enabled = false;
+        sprite.enabled = false;
+        rb.gravityScale = 0f;
+        moveInput = Vector2.zero;
+    }
+
+    public void SetShow()
+    {
+        State = PlayerState.Control;
+        rb.simulated = true;
+        col.enabled = true;
+        sprite.enabled = true;
+        rb.linearVelocity = Vector2.zero;
+        rb.gravityScale = 3f;
+        Debug.Log("show " + gameObject.name);
     }
 }
