@@ -127,19 +127,6 @@ public class ButtonTrigger : MonoBehaviour
         }
         return false;
     }
-    
-    private bool HasPlayer(string playerName)
-    {
-        foreach (var player in playersOnButton)
-        {
-            string cleanName = player.name.Replace(" ", "").ToLower();
-            string searchName = playerName.Replace(" ", "").ToLower();
-            
-            if (cleanName.Contains(searchName))
-                return true;
-        }
-        return false;
-    }
 
     private void OnButtonPressed()
     {
