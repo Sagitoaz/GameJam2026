@@ -1,10 +1,18 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public enum ButtonType
 {
     SinglePlayer,  // Chỉ cần 1 player
     DualPlayer     // Cần cả 2 player
+}
+
+public enum PlayerRequirement
+{
+    Any,           // Bất kỳ player nào
+    Player1Only,   // Chỉ Player 1
+    Player2Only    // Chỉ Player 2
 }
 
 public enum ButtonMode
@@ -17,13 +25,16 @@ public class ButtonTrigger : MonoBehaviour
 {
     [Header("Button Settings")]
     [SerializeField] private ButtonType buttonType = ButtonType.SinglePlayer;
+    [SerializeField] private PlayerRequirement playerRequirement = PlayerRequirement.Any;
     [SerializeField] private ButtonMode buttonMode = ButtonMode.Normal;
     [SerializeField] private string eventName = "Button01_Pressed";
     [SerializeField] private bool requireSeparatePlayers = true;
 
     [Header("Visual Feedback")]
     [SerializeField] private SpriteRenderer buttonSprite;
-    [SerializeField] private Color normalColor = Color.gray;
+    [SerializeField] private Color normalColorAny = Color.gray;
+    [SerializeField] private Color normalColorP1 = new Color(0.3f, 0.6f, 1f); // Xanh dương cho P1
+    [SerializeField] private Color normalColorP2 = new Color(1f, 0.4f, 0.3f); // Đỏ cam cho P2
     [SerializeField] private Color pressedColor = Color.green;
     [SerializeField] private float pressedYOffset = -0.1f;
 
@@ -37,7 +48,8 @@ public class ButtonTrigger : MonoBehaviour
 
         if (buttonSprite == null)
             buttonSprite = GetComponentInChildren<SpriteRenderer>();
-
+        
+        // Set màu ban đầu để người chơi thấy
         UpdateVisual();
     }
 
@@ -65,27 +77,24 @@ public class ButtonTrigger : MonoBehaviour
 
         if (buttonType == ButtonType.SinglePlayer)
         {
-            shouldBePressed = playersOnButton.Count > 0;
+            // Check player requirement
+            if (playerRequirement == PlayerRequirement.Any)
+            {
+                shouldBePressed = playersOnButton.Count > 0;
+            }
+            else if (playerRequirement == PlayerRequirement.Player1Only)
+            {
+                shouldBePressed = HasPlayer("Player1") || HasPlayer("player1");
+            }
+            else if (playerRequirement == PlayerRequirement.Player2Only)
+            {
+                shouldBePressed = HasPlayer("Player2") || HasPlayer("player2");
+            }
         }
-        else // DualPlayer
+        else if (buttonType == ButtonType.DualPlayer)
         {
-            if (requireSeparatePlayers)
-            {
-                int separateCount = 0;
-                foreach (var player in playersOnButton)
-                {
-                    if (!player.name.Contains("Horizontal") &&
-                        !player.name.Contains("Vertical"))
-                    {
-                        separateCount++;
-                    }
-                }
-                shouldBePressed = separateCount >= 2;
-            }
-            else
-            {
-                shouldBePressed = playersOnButton.Count >= 2;
-            }
+            // Cần 2 player cùng đứng trên 1 nút này
+            shouldBePressed = playersOnButton.Count >= 2;
         }
 
         if (shouldBePressed != isPressed)
@@ -105,9 +114,36 @@ public class ButtonTrigger : MonoBehaviour
             }
         }
     }
+    
+    private bool HasPlayer(string playerName)
+    {
+        foreach (var player in playersOnButton)
+        {
+            string cleanName = player.name.Replace(" ", "").ToLower();
+            string searchName = playerName.Replace(" ", "").ToLower();
+            
+            if (cleanName.Contains(searchName))
+                return true;
+        }
+        return false;
+    }
+    
+    private bool HasPlayer(string playerName)
+    {
+        foreach (var player in playersOnButton)
+        {
+            string cleanName = player.name.Replace(" ", "").ToLower();
+            string searchName = playerName.Replace(" ", "").ToLower();
+            
+            if (cleanName.Contains(searchName))
+                return true;
+        }
+        return false;
+    }
 
     private void OnButtonPressed()
     {
+        Debug.Log($"<color=green>[Button {name}] PRESSED! Event: {eventName}</color>");
         EventManager.Instance.TriggerEvent(eventName);
         UpdateVisual();
     }
@@ -122,7 +158,26 @@ public class ButtonTrigger : MonoBehaviour
     {
         if (buttonSprite != null)
         {
-            buttonSprite.color = isPressed ? pressedColor : normalColor;
+            if (isPressed)
+            {
+                buttonSprite.color = pressedColor;
+            }
+            else
+            {
+                // Màu normal dựa theo player requirement
+                switch (playerRequirement)
+                {
+                    case PlayerRequirement.Player1Only:
+                        buttonSprite.color = normalColorP1;
+                        break;
+                    case PlayerRequirement.Player2Only:
+                        buttonSprite.color = normalColorP2;
+                        break;
+                    default:
+                        buttonSprite.color = normalColorAny;
+                        break;
+                }
+            }
         }
 
         if (isPressed)
@@ -137,12 +192,14 @@ public class ButtonTrigger : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = buttonType == ButtonType.SinglePlayer
-            ? Color.yellow
-            : Color.cyan;
-
-        var col = GetComponent<Collider2D>();
-        if (col != null)
-            Gizmos.DrawWireCube(col.bounds.center, col.bounds.size);
+        // Màu gizmo theo player requirement
+        if (playerRequirement == PlayerRequirement.Player1Only)
+            Gizmos.color = normalColorP1;
+        else if (playerRequirement == PlayerRequirement.Player2Only)
+            Gizmos.color = normalColorP2;
+        else
+            Gizmos.color = buttonType == ButtonType.SinglePlayer ? Color.yellow : Color.cyan;
+            
+        Gizmos.DrawWireCube(transform.position, GetComponent<Collider2D>()?.bounds.size ?? Vector3.one * 0.5f);
     }
 }
