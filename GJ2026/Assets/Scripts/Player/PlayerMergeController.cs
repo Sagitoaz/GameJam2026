@@ -1,94 +1,101 @@
 using System.Collections;
-using NUnit.Framework.Constraints;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-class PlayerMergeSplitController : MonoBehaviour
+public class PlayerMergeSplitController : MonoBehaviour
 {
+    [Header("Player References")]
     [SerializeField] private Player _player1;
     [SerializeField] private Player _player2;
     [SerializeField] private Player _playerVertical;
     [SerializeField] private Player _playerHorizontal;
-    private float _mergeSpeed = 5f;
-    private float _splitForceP1 = 10f;
-    private float _splitForceP2 = 50f;
+    
+    [Header("Merge Settings")]
+    [SerializeField] private float _maxMergeDistance = 8f;
+    [SerializeField] private float _mergeSpeed = 15f;
+    
+    [Header("Split Settings")]
+    [SerializeField] private float _splitForceP1 = 10f;
+    [SerializeField] private float _splitForceP2 = 50f;
+    [SerializeField] private float _splitForceVertical = 20f;
+    [SerializeField] private float _splitNoGravityDuration = 0.3f;
 
-    private BoxCollider2D col1, col2, col3, col4;
-    private Rigidbody2D rb1, rb2;
-    MergeState _state = MergeState.Separate;
-
-    private bool _isP1Left = true;
+    private float _width, _height, _diagonal;
+    private BoxCollider2D _colPlayer1, _colPlayer2;
+    private Rigidbody2D _rbPlayer1, _rbPlayer2;
+    private LayerMask _groundMask;
+    private MergeState _state = MergeState.Separate;
 
     private void Awake()
     {
-        col1 = _player1.GetComponent<BoxCollider2D>();
-        col2 = _player2.GetComponent<BoxCollider2D>();
-        col3 = _playerVertical.GetComponent<BoxCollider2D>();
-        col4 = _playerHorizontal.GetComponent<BoxCollider2D>();
-        rb1 = _player1.GetComponent<Rigidbody2D>();
-        rb2 = _player2.GetComponent<Rigidbody2D>();
+        _colPlayer1 = _player1.GetComponent<BoxCollider2D>();
+        _colPlayer2 = _player2.GetComponent<BoxCollider2D>();
+        _rbPlayer1 = _player1.GetComponent<Rigidbody2D>();
+        _rbPlayer2 = _player2.GetComponent<Rigidbody2D>();
+        _groundMask = LayerMask.GetMask("Ground");
+    }
+
+    private void Start()
+    {
+        _width = _colPlayer1.bounds.extents.x;
+        _height = _colPlayer1.bounds.extents.y;
+        _diagonal = Mathf.Sqrt(_width * _width + _height * _height);
     }
     public void OnMerge(InputAction.CallbackContext context)
     {
-        Debug.Log(_state.ToString());
         if (!context.performed) return;
-        if (_state == MergeState.Separate)
+        
+        if (_state == MergeState.Separate && CanMerge())
         {
             _state = MergeState.Merging;
-            GameManager.Instance.playerMode = PlayerMode.None;
+            GameManager.Instance.PlayerMode = PlayerMode.None;
             StartCoroutine(MergeRoutine());
         }
-        else if(_state == MergeState.Merged)
+        else if (_state == MergeState.Merged)
         {
             _state = MergeState.Separate;
             Split();
         }
     }
 
-    IEnumerator MergeRoutine()
+    private bool CanMerge()
     {
-        Vector3 midpoint = (_player1.transform.position + _player2.transform.position) / 2f;
+        Vector3 pos1 = _player1.transform.position;
+        Vector3 pos2 = _player2.transform.position;
+        float distance = Vector2.Distance(pos1, pos2);
+        
+        if (distance > _maxMergeDistance) return false;
+        
+        Vector2 direction = (pos2 - pos1).normalized;
+        RaycastHit2D hit = Physics2D.Raycast(pos1, direction, distance, _groundMask);
+        
+        Debug.DrawLine(pos1, pos2, hit.collider != null ? Color.red : Color.green, 0.5f);
+        
+        return hit.collider == null;
+    }
 
-        bool isHorizontal = Mathf.Abs(
-            _player1.transform.position.x - _player2.transform.position.x
-        ) >
-        Mathf.Abs(
-            _player1.transform.position.y - _player2.transform.position.y
-        );
+    private IEnumerator MergeRoutine()
+    {
+        Vector3 midpoint = (_player1.transform.position + _player2.transform.position) * 0.5f;
 
-        // xác định hướng P1
-        _isP1Left = isHorizontal
-            ? _player1.transform.position.x < _player2.transform.position.x
-            : _player1.transform.position.y < _player2.transform.position.y;
+        _rbPlayer1.simulated = false;
+        _rbPlayer2.simulated = false;
 
-        rb1.simulated = false;
-        rb2.simulated = false;
-        col1.enabled = false;
-        col2.enabled = false;
-
-        float targetDist = isHorizontal
-            ? col1.size.x * 1.2f
-            : col1.size.y * 1.2f;
-
-        while (Vector2.Distance(_player1.transform.position, midpoint) > targetDist)
+        while (Vector2.Distance(_player1.transform.position, midpoint) >= _diagonal)
         {
-            _player1.transform.position =
-                Vector3.Lerp(_player1.transform.position, midpoint, _mergeSpeed * Time.deltaTime);
-
-            _player2.transform.position =
-                Vector3.Lerp(_player2.transform.position, midpoint, _mergeSpeed * Time.deltaTime);
-
+            float step = _mergeSpeed * Time.deltaTime;
+            _player1.transform.position = Vector3.MoveTowards(_player1.transform.position, midpoint, step);
+            _player2.transform.position = Vector3.MoveTowards(_player2.transform.position, midpoint, step);
             yield return null;
         }
 
         _player1.SetHide();
         _player2.SetHide();
 
-        GameManager.Instance.playerMode = PlayerMode.Horizontal;
-        GameManager.Instance.currentGameMode = _playerHorizontal;
-
-        GameManager.Instance.currentGameMode.SetShow();
-        GameManager.Instance.currentGameMode.transform.position = midpoint;
+        GameManager.Instance.PlayerMode = PlayerMode.Horizontal;
+        GameManager.Instance.CurrentGameMode = _playerHorizontal;
+        GameManager.Instance.CurrentGameMode.transform.position = midpoint;
+        GameManager.Instance.CurrentGameMode.SetShow();
 
         _state = MergeState.Merged;
     }
@@ -96,66 +103,59 @@ class PlayerMergeSplitController : MonoBehaviour
 
     private void Split()
     {
-        PlayerMode splitMode = GameManager.Instance.playerMode;
-            bool isHorizontal = splitMode == PlayerMode.Horizontal;
-        Debug.Log(isHorizontal.ToString() + " " + splitMode.ToString());
+        PlayerMode splitMode = GameManager.Instance.PlayerMode;
 
-        Vector3 centerPos = GameManager.Instance.currentGameMode.transform.position;
+        Player mergedPlayer = GameManager.Instance.CurrentGameMode;
+        Vector3 centerPos = mergedPlayer.transform.position;
 
-        GameManager.Instance.currentGameMode.SetHide();
-        GameManager.Instance.playerMode = PlayerMode.None;
+        mergedPlayer.SetHide();
+        GameManager.Instance.PlayerMode = PlayerMode.None;
 
-        _player1.SetShow();
-        _player2.SetShow();
+        ShowSinglePlayers(centerPos, splitMode);
 
-        float halfP1 = isHorizontal ? col1.size.x * 0.5f : col1.size.y * 0.5f;
-        float halfMerged = isHorizontal ? col3.size.x * 0.5f : col3.size.y * 0.5f;
-
-        float gap = 0.02f;
-        float offset = halfP1 + halfMerged + gap;
-
-        Vector3 splitDir = isHorizontal
-            ? (_isP1Left ? Vector3.left : Vector3.right)
-            : (_isP1Left ? Vector3.down : Vector3.up);
-
-        _player1.transform.position = centerPos + splitDir * offset;
-        _player2.transform.position = centerPos - splitDir * offset;
-
-        Vector2 forceDir = isHorizontal
-            ? Vector2.right * Mathf.Sign(splitDir.x)
-            : Vector2.up * Mathf.Sign(splitDir.y);
-        
-        if(isHorizontal)
+        if (splitMode == PlayerMode.Vertical)
         {
-            _player1.ApplyKnockback(forceDir * _splitForceP1);
-            _player2.ApplyKnockback(-forceDir * _splitForceP2);
-            StartCoroutine(DampVelocity(rb1));
-            StartCoroutine(DampVelocity(rb2));
+            SplitVertical();
+        }
+        else if (splitMode == PlayerMode.Horizontal)
+        {
+            SplitHorizontal();
+        }
+
+        _state = MergeState.Separate;
+    }
+
+    private void ShowSinglePlayers(Vector3 pos, PlayerMode splitMode)
+    {
+        if (splitMode == PlayerMode.Horizontal)
+        {
+            _player1.transform.position = new Vector3(pos.x - _width, pos.y, pos.z);
+            _player2.transform.position = new Vector3(pos.x + _width, pos.y, pos.z);
         }
         else
         {
-            if (_isP1Left)
-            {
-                _player2.ApplyKnockback(Vector2.up * _splitForceP2);
-                StartCoroutine(DampVelocity(rb2));
-            }
-            else
-            {
-                _player1.ApplyKnockback(Vector2.up * _splitForceP1);
-                StartCoroutine(DampVelocity(rb1));
-            }
+            _player1.transform.position = new Vector3(pos.x, pos.y - _height, pos.z);
+            _player2.transform.position = new Vector3(pos.x, pos.y + _height, pos.z);
         }
+
+        _player1.SetShow();
+        _player2.SetShow();
     }
 
 
-
-    IEnumerator DampVelocity(Rigidbody2D rb)
+    private void SplitVertical()
     {
-        while (rb.linearVelocity.magnitude > 0.05f)
-        {
-            rb.linearVelocity = Vector2.Lerp(rb.linearVelocity, Vector2.zero, Time.deltaTime);
-            yield return null;
-        }
-        rb.linearVelocity = Vector2.zero;
+        Player topPlayer = _player1.transform.position.y >= _player2.transform.position.y ? _player1 : _player2;
+        Player bottomPlayer = topPlayer == _player1 ? _player2 : _player1;
+        
+        topPlayer.ApplyKnockbackNoGravity(Vector2.up * _splitForceVertical, _splitNoGravityDuration);
+        bottomPlayer.ApplyKnockbackNoGravity(Vector2.down * _splitForceVertical * 0.5f, _splitNoGravityDuration);
     }
+
+    private void SplitHorizontal()
+    {
+        _player1.ApplyKnockbackNoGravity(Vector2.left * _splitForceP1, _splitNoGravityDuration);
+        _player2.ApplyKnockbackNoGravity(Vector2.right * _splitForceP2, _splitNoGravityDuration);
+    }
+
 }

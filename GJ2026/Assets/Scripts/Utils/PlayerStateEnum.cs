@@ -1,7 +1,7 @@
 public enum PlayerState
 {
     Control,
-    Stay
+    Free
 }
 public enum MergeState
 {

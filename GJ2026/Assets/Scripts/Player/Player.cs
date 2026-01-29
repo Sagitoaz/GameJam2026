@@ -4,17 +4,23 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
-    [SerializeField] private float jumpForce = 12f;
+    
+    [Header("Jump")]
+    [SerializeField] private float jumpForce = 8f;
+    
+    [Header("References")]
     [SerializeField] private GroundDetector groundDetector;
     [SerializeField] private bool canShow;
+    
     private SpriteRenderer sprite;
-
     private Rigidbody2D rb;
     private BoxCollider2D col;
     private Vector2 moveInput;
     private bool isKnockback;
-    public PlayerState State { get;  private set; } = PlayerState.Control;
+    
+    public PlayerState State { get; private set; } = PlayerState.Control;
 
     private void Awake()
     {
@@ -31,13 +37,13 @@ public class Player : MonoBehaviour
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        if (State == PlayerState.Stay) return;
+        if (State == PlayerState.Free) return;
         moveInput = context.ReadValue<Vector2>();
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
-        if (State == PlayerState.Stay) return;
+        if (State == PlayerState.Free) return;
         if (context.performed && groundDetector.IsGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
@@ -46,16 +52,36 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (State == PlayerState.Stay || isKnockback) return;
-        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        if (State == PlayerState.Free || isKnockback) return;
+        
         groundDetector.Check();
+        
+        float targetSpeed = moveInput.x * moveSpeed;
+        rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
     }
-
     public void ApplyKnockback(Vector2 velocity)
     {
         isKnockback = true;
         rb.linearVelocity = velocity;
         StartCoroutine(EndKnockback());
+    }
+
+    public void ApplyKnockbackNoGravity(Vector2 velocity, float duration)
+    {
+        StartCoroutine(KnockbackNoGravityRoutine(velocity, duration));
+    }
+
+    private IEnumerator KnockbackNoGravityRoutine(Vector2 velocity, float duration)
+    {
+        isKnockback = true;
+        float originalGravity = rb.gravityScale;
+        rb.gravityScale = 0f;
+        rb.linearVelocity = velocity;
+        
+        yield return new WaitForSeconds(duration);
+        
+        rb.gravityScale = originalGravity;
+        isKnockback = false;
     }
 
     IEnumerator EndKnockback()
@@ -66,7 +92,7 @@ public class Player : MonoBehaviour
 
     public void SetHide()
     {
-        State = PlayerState.Stay;
+        State = PlayerState.Free;
         rb.simulated = false;
         col.enabled = false;
         sprite.enabled = false;
@@ -82,6 +108,13 @@ public class Player : MonoBehaviour
         sprite.enabled = true;
         rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 3f;
-        Debug.Log("show " + gameObject.name);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("Trap"))
+        {
+            GameManager.Instance.TriggerEndGame();
+        }
     }
 }
