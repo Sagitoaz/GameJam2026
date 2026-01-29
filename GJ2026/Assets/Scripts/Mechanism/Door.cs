@@ -4,24 +4,33 @@ using UnityEngine;
 
 public enum DoorBehavior
 {
-    OpenClose,      // Mở rồi tự đóng lại
-    Toggle,         // Chuyển đổi mở/đóng
-    OneWay          // Chỉ mở một lần, không đóng lại
+    OpenClose,
+    Toggle,
+    OneWay
+}
+
+public enum OpenCloseMode
+{
+    AutoClose,         // Mở rồi tự đóng
+    CloseOnRelease     // Đóng khi button bị nhả
 }
 
 public class Door : MonoBehaviour
 {
     [Header("Door Settings")]
-    [SerializeField] private string[] listenEventNames = new string[] { "Button01_Pressed" }; // Danh sách event cần thỏa mãn
-    [SerializeField] private bool requireAllEvents = true; // true = cần tất cả, false = cần ít nhất 1
+    [SerializeField] private string[] listenEventNames = new string[] { "Button01_Pressed" };
+    [SerializeField] private bool requireAllEvents = true;
     [SerializeField] private DoorBehavior doorBehavior = DoorBehavior.OpenClose;
-    [SerializeField] private float openDuration = 3f; // Thời gian mở (với OpenClose)
-    
+
+    [Header("OpenClose Settings")]
+    [SerializeField] private OpenCloseMode openCloseMode = OpenCloseMode.AutoClose;
+    [SerializeField] private float openDuration = 3f; // chỉ dùng cho AutoClose
+
     [Header("Animation")]
     [SerializeField] private Transform doorVisual;
-    [SerializeField] private Vector3 openOffset = Vector3.up * 2f; // Cửa mở lên trên
+    [SerializeField] private Vector3 openOffset = Vector3.up * 2f;
     [SerializeField] private float animationSpeed = 2f;
-    
+
     private Vector3 closedPosition;
     private Vector3 openPosition;
     private bool isOpen = false;
@@ -38,7 +47,6 @@ public class Door : MonoBehaviour
         openPosition = closedPosition + openOffset;
         doorCollider = GetComponent<BoxCollider2D>();
 
-        // Subscribe tất cả các event
         foreach (string eventName in listenEventNames)
         {
             EventManager.Instance.Subscribe(eventName, () => OnEventPressed(eventName));
@@ -48,13 +56,12 @@ public class Door : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (EventManager.Instance != null)
+        if (EventManager.Instance == null) return;
+
+        foreach (string eventName in listenEventNames)
         {
-            foreach (string eventName in listenEventNames)
-            {
-                EventManager.Instance.Unsubscribe(eventName, () => OnEventPressed(eventName));
-                EventManager.Instance.Unsubscribe(eventName + "_Released", () => OnEventReleased(eventName));
-            }
+            EventManager.Instance.Unsubscribe(eventName, () => OnEventPressed(eventName));
+            EventManager.Instance.Unsubscribe(eventName + "_Released", () => OnEventReleased(eventName));
         }
     }
 
@@ -72,28 +79,36 @@ public class Door : MonoBehaviour
 
     private void CheckDoorCondition()
     {
-        bool shouldOpen = false;
+        bool shouldOpen;
 
         if (requireAllEvents)
-        {
-            // Kiểm tra TẤT CẢ event có được active không
             shouldOpen = activeEvents.Count == listenEventNames.Length;
-        }
         else
-        {
-            // Chỉ cần ít nhất 1 event active
             shouldOpen = activeEvents.Count > 0;
-        }
 
-        // Xử lý theo behavior
-        if (doorBehavior == DoorBehavior.Toggle)
+        switch (doorBehavior)
         {
-            if (shouldOpen && !isOpen)
-                OpenDoor();
-            else if (!shouldOpen && isOpen)
-                CloseDoor();
+            case DoorBehavior.Toggle:
+                if (shouldOpen && !isOpen)
+                    OpenDoor();
+                else if (!shouldOpen && isOpen)
+                    CloseDoor();
+                break;
+
+            case DoorBehavior.OneWay:
+                if (shouldOpen && !isOpen)
+                    OpenDoor();
+                break;
+
+            case DoorBehavior.OpenClose:
+                HandleOpenClose(shouldOpen);
+                break;
         }
-        else if (doorBehavior == DoorBehavior.OpenClose)
+    }
+
+    private void HandleOpenClose(bool shouldOpen)
+    {
+        if (openCloseMode == OpenCloseMode.AutoClose)
         {
             if (shouldOpen)
             {
@@ -101,16 +116,13 @@ public class Door : MonoBehaviour
                 if (closeCoroutine != null) StopCoroutine(closeCoroutine);
                 closeCoroutine = StartCoroutine(CloseAfterDelay());
             }
-            else
-            {
-                if (closeCoroutine != null) StopCoroutine(closeCoroutine);
-                CloseDoor();
-            }
         }
-        else if (doorBehavior == DoorBehavior.OneWay)
+        else if (openCloseMode == OpenCloseMode.CloseOnRelease)
         {
             if (shouldOpen && !isOpen)
                 OpenDoor();
+            else if (!shouldOpen && isOpen)
+                CloseDoor();
         }
     }
 
@@ -119,7 +131,7 @@ public class Door : MonoBehaviour
         isOpen = true;
         StopAllCoroutines();
         StartCoroutine(AnimateDoor(openPosition));
-        
+
         if (doorCollider != null)
             doorCollider.enabled = false;
     }
@@ -129,7 +141,7 @@ public class Door : MonoBehaviour
         isOpen = false;
         StopAllCoroutines();
         StartCoroutine(AnimateDoor(closedPosition));
-        
+
         if (doorCollider != null)
             doorCollider.enabled = true;
     }
@@ -145,6 +157,7 @@ public class Door : MonoBehaviour
             );
             yield return null;
         }
+
         doorVisual.localPosition = targetPosition;
     }
 

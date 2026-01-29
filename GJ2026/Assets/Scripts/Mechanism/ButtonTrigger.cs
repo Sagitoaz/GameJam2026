@@ -7,20 +7,26 @@ public enum ButtonType
     DualPlayer     // Cần cả 2 player
 }
 
+public enum ButtonMode
+{
+    Normal,   // Nút thường: ấn là giữ luôn
+    Special   // Nút đặc biệt: rời ra là bật lại
+}
+
 public class ButtonTrigger : MonoBehaviour
 {
     [Header("Button Settings")]
     [SerializeField] private ButtonType buttonType = ButtonType.SinglePlayer;
+    [SerializeField] private ButtonMode buttonMode = ButtonMode.Normal;
     [SerializeField] private string eventName = "Button01_Pressed";
-    [SerializeField] private bool stayPressed = true; // Nút giữ trạng thái hay reset khi rời
-    [SerializeField] private bool requireSeparatePlayers = true; // Dual button cần 2 player riêng biệt (không cho phép merged player)
-    
+    [SerializeField] private bool requireSeparatePlayers = true;
+
     [Header("Visual Feedback")]
     [SerializeField] private SpriteRenderer buttonSprite;
     [SerializeField] private Color normalColor = Color.gray;
     [SerializeField] private Color pressedColor = Color.green;
-    [SerializeField] private float pressedYOffset = -0.1f; // Độ lún của nút
-    
+    [SerializeField] private float pressedYOffset = -0.1f;
+
     private HashSet<Player> playersOnButton = new HashSet<Player>();
     private bool isPressed = false;
     private Vector3 originalPosition;
@@ -28,31 +34,29 @@ public class ButtonTrigger : MonoBehaviour
     private void Start()
     {
         originalPosition = transform.position;
-        
+
         if (buttonSprite == null)
             buttonSprite = GetComponentInChildren<SpriteRenderer>();
-        
+
         UpdateVisual();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         Player player = other.GetComponent<Player>();
-        if (player != null)
-        {
-            playersOnButton.Add(player);
-            CheckButtonState();
-        }
+        if (player == null) return;
+
+        playersOnButton.Add(player);
+        CheckButtonState();
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
         Player player = other.GetComponent<Player>();
-        if (player != null)
-        {
-            playersOnButton.Remove(player);
-            CheckButtonState();
-        }
+        if (player == null) return;
+
+        playersOnButton.Remove(player);
+        CheckButtonState();
     }
 
     private void CheckButtonState()
@@ -63,31 +67,27 @@ public class ButtonTrigger : MonoBehaviour
         {
             shouldBePressed = playersOnButton.Count > 0;
         }
-        else if (buttonType == ButtonType.DualPlayer)
+        else // DualPlayer
         {
             if (requireSeparatePlayers)
             {
-                // Đếm chỉ player riêng biệt (player1, player2), không tính merged player
-                int separatePlayerCount = 0;
+                int separateCount = 0;
                 foreach (var player in playersOnButton)
                 {
-                    // Check xem có phải player đơn lẻ không (không phải merged player)
-                    // Merged player thường có tên chứa "Horizontal" hoặc "Vertical"
-                    if (!player.name.Contains("Horizontal") && !player.name.Contains("Vertical"))
+                    if (!player.name.Contains("Horizontal") &&
+                        !player.name.Contains("Vertical"))
                     {
-                        separatePlayerCount++;
+                        separateCount++;
                     }
                 }
-                shouldBePressed = separatePlayerCount >= 2;
+                shouldBePressed = separateCount >= 2;
             }
             else
             {
-                // Cho phép merged player, chỉ cần có 2 player bất kỳ
                 shouldBePressed = playersOnButton.Count >= 2;
             }
         }
 
-        // Nếu trạng thái thay đổi
         if (shouldBePressed != isPressed)
         {
             isPressed = shouldBePressed;
@@ -96,9 +96,12 @@ public class ButtonTrigger : MonoBehaviour
             {
                 OnButtonPressed();
             }
-            else if (!stayPressed)
+            else
             {
-                OnButtonReleased();
+                if (buttonMode == ButtonMode.Special)
+                {
+                    OnButtonReleased();
+                }
             }
         }
     }
@@ -122,7 +125,6 @@ public class ButtonTrigger : MonoBehaviour
             buttonSprite.color = isPressed ? pressedColor : normalColor;
         }
 
-        // Hiệu ứng lún xuống
         if (isPressed)
         {
             transform.position = originalPosition + Vector3.up * pressedYOffset;
@@ -135,7 +137,12 @@ public class ButtonTrigger : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = buttonType == ButtonType.SinglePlayer ? Color.yellow : Color.cyan;
-        Gizmos.DrawWireCube(transform.position, GetComponent<Collider2D>()?.bounds.size ?? Vector3.one * 0.5f);
+        Gizmos.color = buttonType == ButtonType.SinglePlayer
+            ? Color.yellow
+            : Color.cyan;
+
+        var col = GetComponent<Collider2D>();
+        if (col != null)
+            Gizmos.DrawWireCube(col.bounds.center, col.bounds.size);
     }
 }
