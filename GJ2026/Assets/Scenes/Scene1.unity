@@ -1393,8 +1393,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
   playerRequirement: 0
+  buttonMode: 0
+  pressDirection: 0
   eventName: Button04_Pressed
-  stayPressed: 1
+  requireSeparatePlayers: 1
   buttonSprite: {fileID: 0}
   normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
@@ -2164,8 +2166,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
   playerRequirement: 0
+  buttonMode: 0
+  pressDirection: 2
   eventName: Button01_Pressed
-  stayPressed: 1
+  requireSeparatePlayers: 1
   buttonSprite: {fileID: 0}
   normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
@@ -2220,8 +2224,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
   playerRequirement: 2
+  buttonMode: 0
+  pressDirection: 0
   eventName: Button03b_Pressed
-  stayPressed: 1
+  requireSeparatePlayers: 1
   buttonSprite: {fileID: 710419536}
   normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
@@ -2522,6 +2528,7 @@ MonoBehaviour:
   - Button03b_Pressed
   requireAllEvents: 1
   doorBehavior: 2
+  openCloseMode: 0
   openDuration: 3
   doorVisual: {fileID: 971109114}
   openOffset: {x: 0, y: -5, z: 0}
@@ -2831,6 +2838,7 @@ MonoBehaviour:
   - Button02_Pressed
   requireAllEvents: 1
   doorBehavior: 2
+  openCloseMode: 0
   openDuration: 3
   doorVisual: {fileID: 1073403865}
   openOffset: {x: 0, y: -5, z: 0}
@@ -3019,8 +3027,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
   playerRequirement: 0
+  buttonMode: 0
+  pressDirection: 2
   eventName: Button02_Pressed
-  stayPressed: 1
+  requireSeparatePlayers: 1
   buttonSprite: {fileID: 0}
   normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
@@ -3614,8 +3624,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
   playerRequirement: 1
+  buttonMode: 0
+  pressDirection: 0
   eventName: Button03a_Pressed
-  stayPressed: 1
+  requireSeparatePlayers: 1
   buttonSprite: {fileID: 1657805389}
   normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
@@ -7628,6 +7640,7 @@ MonoBehaviour:
   - Button01_Pressed
   requireAllEvents: 1
   doorBehavior: 2
+  openCloseMode: 0
   openDuration: 3
   doorVisual: {fileID: 1841527564}
   openOffset: {x: 0, y: -3.5, z: 0}

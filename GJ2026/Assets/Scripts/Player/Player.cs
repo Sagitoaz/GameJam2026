@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     private BoxCollider2D col;
     private Vector2 moveInput;
     private bool isKnockback;
+    private float lastHorizontalDirection = 1f; // 1 = phải, -1 = trái, mặc định là phải
+    
+    public Vector2 MoveInput => moveInput;
+    public float LastHorizontalDirection => lastHorizontalDirection;
     
     public PlayerState State { get; private set; } = PlayerState.Control;
 
@@ -39,6 +43,12 @@ public class Player : MonoBehaviour
     {
         if (State == PlayerState.Free) return;
         moveInput = context.ReadValue<Vector2>();
+        
+        // Lưu hướng ngang cuối cùng nếu có input ngang
+        if (Mathf.Abs(moveInput.x) > 0.1f)
+        {
+            lastHorizontalDirection = Mathf.Sign(moveInput.x);
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)

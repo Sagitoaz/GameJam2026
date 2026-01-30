@@ -129,8 +129,19 @@ public class PlayerMergeSplitController : MonoBehaviour
     {
         if (splitMode == PlayerMode.Horizontal)
         {
-            _player1.transform.position = new Vector3(pos.x - _width, pos.y, pos.z);
-            _player2.transform.position = new Vector3(pos.x + _width, pos.y, pos.z);
+            // Lấy hướng cuối cùng để quyết định vị trí spawn
+            float direction = GameManager.Instance.CurrentGameMode.LastHorizontalDirection;
+            
+            if (direction > 0) // Bắn về phải: P1 trái, P2 phải
+            {
+                _player1.transform.position = new Vector3(pos.x - _width, pos.y, pos.z);
+                _player2.transform.position = new Vector3(pos.x + _width, pos.y, pos.z);
+            }
+            else // Bắn về trái: P1 phải, P2 trái
+            {
+                _player1.transform.position = new Vector3(pos.x + _width, pos.y, pos.z);
+                _player2.transform.position = new Vector3(pos.x - _width, pos.y, pos.z);
+            }
         }
         else
         {
@@ -154,8 +165,19 @@ public class PlayerMergeSplitController : MonoBehaviour
 
     private void SplitHorizontal()
     {
-        _player1.ApplyKnockbackNoGravity(Vector2.left * _splitForceP1, _splitNoGravityDuration);
-        _player2.ApplyKnockbackNoGravity(Vector2.right * _splitForceP2, _splitNoGravityDuration);
+        // Lấy hướng ngang cuối cùng từ player đang merged
+        float direction = GameManager.Instance.CurrentGameMode.LastHorizontalDirection;
+        
+        if (direction > 0) // Hướng cuối cùng là phải → P2 bay phải, P1 giật trái
+        {
+            _player1.ApplyKnockbackNoGravity(Vector2.left * _splitForceP1, _splitNoGravityDuration);
+            _player2.ApplyKnockbackNoGravity(Vector2.right * _splitForceP2, _splitNoGravityDuration);
+        }
+        else // Hướng cuối cùng là trái → P2 bay trái, P1 giật phải
+        {
+            _player1.ApplyKnockbackNoGravity(Vector2.right * _splitForceP1, _splitNoGravityDuration);
+            _player2.ApplyKnockbackNoGravity(Vector2.left * _splitForceP2, _splitNoGravityDuration);
+        }
     }
 
 }
