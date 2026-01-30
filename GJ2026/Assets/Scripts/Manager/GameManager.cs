@@ -45,10 +45,18 @@ public class GameManager : Singleton<GameManager>
 
     public void TriggerEndGame()
     {
-        UnityEngine.Debug.Log("Game Over - Player hit trap!");
-        // TODO: Xử lý endgame logic ở đây
-        // Ví dụ: show UI game over, restart level, etc.
-        Time.timeScale = 0f;
+        Debug.Log("Game Over - Player hit trap!");
+        
+        // Respawn tại checkpoint thay vì dừng game
+        if (CheckpointManager.Instance != null)
+        {
+            CheckpointManager.Instance.RespawnAtCheckpoint();
+        }
+        else
+        {
+            // Fallback: pause game nếu không có CheckpointManager
+            Time.timeScale = 0f;
+        }
     }
 
     public void WinGame()
