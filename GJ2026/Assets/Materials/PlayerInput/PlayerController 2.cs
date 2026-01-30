@@ -120,9 +120,9 @@ public partial class @PlayerController2: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""ChangeMode"",
+                    ""name"": ""VerticalSplit"",
                     ""type"": ""Button"",
-                    ""id"": ""f6997530-4199-468a-b159-e3f0b8669542"",
+                    ""id"": ""fb9005c5-6d3b-4841-abbc-2f9ce8501e88"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -187,12 +187,12 @@ public partial class @PlayerController2: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""5e563d82-95c1-4628-b697-b9fa0f0d7630"",
+                    ""id"": ""9c18a348-a01a-44a6-86ff-7ee3320cca11"",
                     ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ChangeMode"",
+                    ""action"": ""VerticalSplit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -267,7 +267,7 @@ public partial class @PlayerController2: IInputActionCollection2, IDisposable
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Split = m_Player.FindAction("Split", throwIfNotFound: true);
-        m_Player_ChangeMode = m_Player.FindAction("ChangeMode", throwIfNotFound: true);
+        m_Player_VerticalSplit = m_Player.FindAction("VerticalSplit", throwIfNotFound: true);
     }
 
     ~@PlayerController2()
@@ -351,7 +351,7 @@ public partial class @PlayerController2: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Split;
-    private readonly InputAction m_Player_ChangeMode;
+    private readonly InputAction m_Player_VerticalSplit;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -376,9 +376,9 @@ public partial class @PlayerController2: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Split => m_Wrapper.m_Player_Split;
         /// <summary>
-        /// Provides access to the underlying input action "Player/ChangeMode".
+        /// Provides access to the underlying input action "Player/VerticalSplit".
         /// </summary>
-        public InputAction @ChangeMode => m_Wrapper.m_Player_ChangeMode;
+        public InputAction @VerticalSplit => m_Wrapper.m_Player_VerticalSplit;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -414,9 +414,9 @@ public partial class @PlayerController2: IInputActionCollection2, IDisposable
             @Split.started += instance.OnSplit;
             @Split.performed += instance.OnSplit;
             @Split.canceled += instance.OnSplit;
-            @ChangeMode.started += instance.OnChangeMode;
-            @ChangeMode.performed += instance.OnChangeMode;
-            @ChangeMode.canceled += instance.OnChangeMode;
+            @VerticalSplit.started += instance.OnVerticalSplit;
+            @VerticalSplit.performed += instance.OnVerticalSplit;
+            @VerticalSplit.canceled += instance.OnVerticalSplit;
         }
 
         /// <summary>
@@ -437,9 +437,9 @@ public partial class @PlayerController2: IInputActionCollection2, IDisposable
             @Split.started -= instance.OnSplit;
             @Split.performed -= instance.OnSplit;
             @Split.canceled -= instance.OnSplit;
-            @ChangeMode.started -= instance.OnChangeMode;
-            @ChangeMode.performed -= instance.OnChangeMode;
-            @ChangeMode.canceled -= instance.OnChangeMode;
+            @VerticalSplit.started -= instance.OnVerticalSplit;
+            @VerticalSplit.performed -= instance.OnVerticalSplit;
+            @VerticalSplit.canceled -= instance.OnVerticalSplit;
         }
 
         /// <summary>
@@ -567,11 +567,11 @@ public partial class @PlayerController2: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnSplit(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "ChangeMode" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "VerticalSplit" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnChangeMode(InputAction.CallbackContext context);
+        void OnVerticalSplit(InputAction.CallbackContext context);
     }
 }

@@ -7,8 +7,7 @@ public class PlayerMergeSplitController : MonoBehaviour
     [Header("Player References")]
     [SerializeField] private Player _player1;
     [SerializeField] private Player _player2;
-    [SerializeField] private Player _playerVertical;
-    [SerializeField] private Player _playerHorizontal;
+    [SerializeField] private Player _playerMerged; // Chỉ còn 1 dạng gộp
     
     [Header("Merge Settings")]
     [SerializeField] private float _maxMergeDistance = 8f;
@@ -47,14 +46,28 @@ public class PlayerMergeSplitController : MonoBehaviour
         
         if (_state == MergeState.Separate && CanMerge())
         {
+            // Gộp lại
             _state = MergeState.Merging;
             GameManager.Instance.PlayerMode = PlayerMode.None;
             StartCoroutine(MergeRoutine());
         }
         else if (_state == MergeState.Merged)
         {
+            // Tách ngang
             _state = MergeState.Separate;
-            Split();
+            SplitHorizontal();
+        }
+    }
+
+    public void OnVerticalSplit(InputAction.CallbackContext context)
+    {
+        if (!context.performed) return;
+        
+        if (_state == MergeState.Merged)
+        {
+            // Tách dọc
+            _state = MergeState.Separate;
+            SplitVertical();
         }
     }
 
@@ -92,8 +105,15 @@ public class PlayerMergeSplitController : MonoBehaviour
         _player1.SetHide();
         _player2.SetHide();
 
+        // Chỉ còn 1 dạng gộp
+        if (_playerMerged == null)
+        {
+            Debug.LogError("[PlayerMergeSplitController] _playerMerged chưa được gán! Hãy kéo Player Merged vào Inspector.");
+            yield break;
+        }
+
         GameManager.Instance.PlayerMode = PlayerMode.Horizontal;
-        GameManager.Instance.CurrentGameMode = _playerHorizontal;
+        GameManager.Instance.CurrentGameMode = _playerMerged;
         GameManager.Instance.CurrentGameMode.transform.position = midpoint;
         GameManager.Instance.CurrentGameMode.SetShow();
 
@@ -101,33 +121,9 @@ public class PlayerMergeSplitController : MonoBehaviour
     }
 
 
-    private void Split()
+    private void ShowSinglePlayers(Vector3 pos, bool isHorizontal)
     {
-        PlayerMode splitMode = GameManager.Instance.PlayerMode;
-
-        Player mergedPlayer = GameManager.Instance.CurrentGameMode;
-        Vector3 centerPos = mergedPlayer.transform.position;
-
-        mergedPlayer.SetHide();
-        GameManager.Instance.PlayerMode = PlayerMode.None;
-
-        ShowSinglePlayers(centerPos, splitMode);
-
-        if (splitMode == PlayerMode.Vertical)
-        {
-            SplitVertical();
-        }
-        else if (splitMode == PlayerMode.Horizontal)
-        {
-            SplitHorizontal();
-        }
-
-        _state = MergeState.Separate;
-    }
-
-    private void ShowSinglePlayers(Vector3 pos, PlayerMode splitMode)
-    {
-        if (splitMode == PlayerMode.Horizontal)
+        if (isHorizontal)
         {
             // Lấy hướng cuối cùng để quyết định vị trí spawn
             float direction = GameManager.Instance.CurrentGameMode.LastHorizontalDirection;
@@ -143,7 +139,7 @@ public class PlayerMergeSplitController : MonoBehaviour
                 _player2.transform.position = new Vector3(pos.x - _width, pos.y, pos.z);
             }
         }
-        else
+        else // Split dọc
         {
             _player1.transform.position = new Vector3(pos.x, pos.y - _height, pos.z);
             _player2.transform.position = new Vector3(pos.x, pos.y + _height, pos.z);
@@ -156,6 +152,14 @@ public class PlayerMergeSplitController : MonoBehaviour
 
     private void SplitVertical()
     {
+        Player mergedPlayer = GameManager.Instance.CurrentGameMode;
+        Vector3 centerPos = mergedPlayer.transform.position;
+
+        mergedPlayer.SetHide();
+        GameManager.Instance.PlayerMode = PlayerMode.None;
+
+        ShowSinglePlayers(centerPos, false); // false = dọc
+
         Player topPlayer = _player1.transform.position.y >= _player2.transform.position.y ? _player1 : _player2;
         Player bottomPlayer = topPlayer == _player1 ? _player2 : _player1;
         
@@ -165,6 +169,14 @@ public class PlayerMergeSplitController : MonoBehaviour
 
     private void SplitHorizontal()
     {
+        Player mergedPlayer = GameManager.Instance.CurrentGameMode;
+        Vector3 centerPos = mergedPlayer.transform.position;
+
+        mergedPlayer.SetHide();
+        GameManager.Instance.PlayerMode = PlayerMode.None;
+
+        ShowSinglePlayers(centerPos, true); // true = ngang
+
         // Lấy hướng ngang cuối cùng từ player đang merged
         float direction = GameManager.Instance.CurrentGameMode.LastHorizontalDirection;
         
