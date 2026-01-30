@@ -132,8 +132,7 @@ public class Door : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(AnimateDoor(openPosition));
 
-        if (doorCollider != null)
-            doorCollider.enabled = false;
+        
     }
 
     private void CloseDoor()
@@ -142,8 +141,7 @@ public class Door : MonoBehaviour
         StopAllCoroutines();
         StartCoroutine(AnimateDoor(closedPosition));
 
-        if (doorCollider != null)
-            doorCollider.enabled = true;
+
     }
 
     private IEnumerator AnimateDoor(Vector3 targetPosition)

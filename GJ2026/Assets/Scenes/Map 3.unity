@@ -16946,11 +16946,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button07_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 462927435}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &462927434
@@ -18042,11 +18045,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button10_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 675517874}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &675517873
@@ -18201,11 +18207,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button01_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 701185212}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &701185211
@@ -18596,11 +18605,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button04b_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 720865125}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &720865124
@@ -19272,11 +19284,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 1
   eventName: Button09_Right_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 787740212}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &787740211
@@ -20641,11 +20656,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button14_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 940562761}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &940562760
@@ -21204,11 +21222,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button04a_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 988257761}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &988257760
@@ -21828,11 +21849,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 1
   eventName: Button09_Left_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 1090159121}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &1090159120
@@ -22476,11 +22500,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button12_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 1189961685}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &1189961684
@@ -22635,11 +22662,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button06b_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 1203164446}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &1203164445
@@ -85114,11 +85144,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button05_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 1317646550}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &1317646549
@@ -85273,11 +85306,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button06a_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 1318933985}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &1318933984
@@ -86183,11 +86219,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6044436493803270888, guid: 252169211ad4eec49ab1501f5b3e009f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 52.1
+      value: 54.1
       objectReference: {fileID: 0}
     - target: {fileID: 6044436493803270888, guid: 252169211ad4eec49ab1501f5b3e009f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 29.3
+      value: 29.7
       objectReference: {fileID: 0}
     - target: {fileID: 6044436493803270888, guid: 252169211ad4eec49ab1501f5b3e009f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -86556,11 +86592,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button07_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 1582116480}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &1582116479
@@ -88660,11 +88699,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button02_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 1708535367}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &1708535366
@@ -146116,11 +146158,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button03_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 1839749356}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &1839749355
@@ -146280,11 +146325,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button11_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 1849736406}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &1849736405
@@ -146439,11 +146487,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ButtonTrigger
   buttonType: 0
+  playerRequirement: 0
   buttonMode: 0
   eventName: Button13_Pressed
   requireSeparatePlayers: 1
   buttonSprite: {fileID: 1852277360}
-  normalColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorAny: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  normalColorP1: {r: 0.3, g: 0.6, b: 1, a: 1}
+  normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
 --- !u!61 &1852277359

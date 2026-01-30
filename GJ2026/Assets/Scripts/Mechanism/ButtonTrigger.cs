@@ -39,7 +39,7 @@ public class ButtonTrigger : MonoBehaviour
     [SerializeField] private float pressedYOffset = -0.1f;
 
     private HashSet<Player> playersOnButton = new HashSet<Player>();
-    private bool isPressed = false;
+    [SerializeField] private bool isPressed = false;
     private Vector3 originalPosition;
 
     private void Start()
@@ -95,6 +95,8 @@ public class ButtonTrigger : MonoBehaviour
         {
             // Cần 2 player cùng đứng trên 1 nút này
             shouldBePressed = playersOnButton.Count >= 2;
+
+            
         }
 
         if (shouldBePressed != isPressed)
