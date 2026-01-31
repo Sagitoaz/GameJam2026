@@ -9,13 +9,11 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private AudioSource SFXSource;
     public bool _isMutedMusic = false;
     public bool _isMutedSFX = false;
-    public AudioClip jump;
-    public AudioClip crash;
-    public AudioClip gameOver;
     public AudioClip click;
 
     public override void Awake()
     {
+        PlayerPrefs.DeleteAll();
         base.Awake();
         if (musicSource) musicSource.playOnAwake = false;
         if (SFXSource) SFXSource.playOnAwake = false;

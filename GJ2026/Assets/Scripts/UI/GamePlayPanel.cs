@@ -7,6 +7,7 @@ public class GamePlayPanel : Panel
     [SerializeField] private PausePanel PausePanel;
     public void OnClickPauseButton()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.click);
         PausePanel.gameObject.SetActive(true);
         Time.timeScale = 0f;
         ToggleCamera(false);

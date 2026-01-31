@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3500979786659973931
 RectTransform:
   m_ObjectHideFlags: 0
@@ -586,10 +586,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingPanel
   destroyOnClose: 1
-  muteMusic: {fileID: 3169350168420608872}
-  unMuteMusic: {fileID: 149016905401046345}
-  muteSFX: {fileID: 6806533718576811325}
-  unMuteSFX: {fileID: 3893512390657538777}
+  muteMusic: {fileID: 149016905401046345}
+  unMuteMusic: {fileID: 3169350168420608872}
+  muteSFX: {fileID: 3893512390657538777}
+  unMuteSFX: {fileID: 6806533718576811325}
 --- !u!1 &3876545343633336722
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +683,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1934887134424040839
 RectTransform:
   m_ObjectHideFlags: 0
