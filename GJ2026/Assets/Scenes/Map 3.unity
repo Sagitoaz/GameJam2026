@@ -17536,7 +17536,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7153703ac80f2a04e9297d035ffd0931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PausePanel
-  destroyOnClose: 0
 --- !u!1 &559462051
 GameObject:
   m_ObjectHideFlags: 0
@@ -20045,21 +20044,9 @@ MonoBehaviour:
     m_ActionId: b2664281-4212-4b81-b061-ff001f1a33b8
     m_ActionName: 'Player/Split[/Keyboard/e]'
   - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 802493924}
-        m_TargetAssemblyTypeName: PlayerGameMode, Assembly-CSharp
-        m_MethodName: OnChangeMode
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: f6997530-4199-468a-b159-e3f0b8669542
-    m_ActionName: 'Player/ChangeMode[/Keyboard/q]'
+      m_Calls: []
+    m_ActionId: fb9005c5-6d3b-4841-abbc-2f9ce8501e88
+    m_ActionName: 'Player/VerticalSplit[/Keyboard/q]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -23646,7 +23633,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f710a433e7d5e124394580dfb17b6916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Panel
-  destroyOnClose: 0
 --- !u!1 &1245491577
 GameObject:
   m_ObjectHideFlags: 0
@@ -146267,8 +146253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 012ee2e1a8968be4a911d1f8e45ee4a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MenuPanel
-  destroyOnClose: 0
-  _instructionPanel: {fileID: 1245458985}
 --- !u!1001 &1693559600
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146620,7 +146604,7 @@ TilemapRenderer:
   m_SortingOrder: 10
   m_MaskInteraction: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0, z: 0}
+  m_ChunkCullingBounds: {x: 0.016129017, y: 0.016129017, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -156348,8 +156332,8 @@ Tilemap:
   - first: {x: -10, y: -13, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 14
-      m_TileSpriteIndex: 13
+      m_TileIndex: 16
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -156358,8 +156342,8 @@ Tilemap:
   - first: {x: -9, y: -13, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 14
-      m_TileSpriteIndex: 13
+      m_TileIndex: 16
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -156368,8 +156352,8 @@ Tilemap:
   - first: {x: -8, y: -13, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 14
-      m_TileSpriteIndex: 13
+      m_TileIndex: 16
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -156378,8 +156362,8 @@ Tilemap:
   - first: {x: -7, y: -13, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 14
-      m_TileSpriteIndex: 13
+      m_TileIndex: 16
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -156388,8 +156372,8 @@ Tilemap:
   - first: {x: -6, y: -13, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 14
-      m_TileSpriteIndex: 13
+      m_TileIndex: 16
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -156398,8 +156382,8 @@ Tilemap:
   - first: {x: -5, y: -13, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 14
-      m_TileSpriteIndex: 13
+      m_TileIndex: 16
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -158308,8 +158292,8 @@ Tilemap:
   - first: {x: -8, y: -9, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 14
-      m_TileSpriteIndex: 13
+      m_TileIndex: 16
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -158318,8 +158302,8 @@ Tilemap:
   - first: {x: -7, y: -9, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 14
-      m_TileSpriteIndex: 13
+      m_TileIndex: 16
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -158328,8 +158312,8 @@ Tilemap:
   - first: {x: -6, y: -9, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 14
-      m_TileSpriteIndex: 13
+      m_TileIndex: 16
+      m_TileSpriteIndex: 16
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -201625,12 +201609,12 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 2
     m_Data: {fileID: 11400000, guid: 354af9231d1d50a42b28ec9fd26e4157, type: 2}
-  - m_RefCount: 5494
+  - m_RefCount: 5485
     m_Data: {fileID: 11400000, guid: 68cdeec40cde40849b31916066573742, type: 2}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 9
+    m_Data: {fileID: 11400000, guid: 67cae53b3ae7aec46b73bc82c891d589, type: 2}
   m_TileSpriteArray:
   - m_RefCount: 2
     m_Data: {fileID: 1766595564, guid: 20fe5ba84c7100049b9eb813cbf061a0, type: 3}
@@ -201658,14 +201642,14 @@ Tilemap:
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 5494
+  - m_RefCount: 5485
     m_Data: {fileID: 4457835537561387818, guid: 5b55716980274ab4983c22e66f951d14, type: 3}
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 0
     m_Data: {fileID: 0}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 9
+    m_Data: {fileID: -192994248, guid: df5fd6767b7bee947ac6c2a848af53f7, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 5496
     m_Data:
@@ -236622,7 +236606,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ae3360103432c647b5b7f92c6f5122d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingPanel
-  destroyOnClose: 0
 --- !u!1 &1902098593
 GameObject:
   m_ObjectHideFlags: 0
@@ -236712,7 +236695,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35fb95f7bf735b40abffb857cd45670, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameplayPanel
-  destroyOnClose: 0
 --- !u!1 &1934328596
 GameObject:
   m_ObjectHideFlags: 0
