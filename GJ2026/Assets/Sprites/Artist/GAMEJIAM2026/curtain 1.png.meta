@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 381ddd5dd6d902243bf0be427e26f12c
+guid: 87bdd27663f7d3f4aa7cb3103269ee19
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -100,35 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: curtain_0
+      name: curtain 1_0
       rect:
         serializedVersion: 2
-        x: 599
-        y: 658
-        width: 320
-        height: 320
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 53ba22aba5a3d37e0800000000000000
-      internalID: -1784205716024546507
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: curtain_1
-      rect:
-        serializedVersion: 2
-        x: 599
-        y: 338
-        width: 320
-        height: 320
+        x: 594
+        y: 139
+        width: 330
+        height: 836
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4d3fddbbcc51aea4ca5b68d406401dd7
-      internalID: 764914324
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: curtain_2
-      rect:
-        serializedVersion: 2
-        x: 599
-        y: 18
-        width: 320
-        height: 320
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e61d708cd7a09d43a3d1c80b562cf0c
-      internalID: -1066240029
+      spriteID: 5d93c5965fca60141a4166e0453ce657
+      internalID: 1547385765
       vertices: []
       indices: 
       edges: []
@@ -177,11 +133,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      curtain_0: -1784205716024546507
-      curtain_1: 764914324
-      curtain_2: -1066240029
+      curtain 1_0: 1547385765
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

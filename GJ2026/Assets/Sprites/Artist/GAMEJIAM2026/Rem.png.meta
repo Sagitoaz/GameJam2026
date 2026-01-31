@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 381ddd5dd6d902243bf0be427e26f12c
+guid: 97c03a4976b67334498da111dc75e52e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1784205716024546507
-    second: curtain_0
+      213: -8316907929562738955
+    second: Rem_0
+  - first:
+      213: 8819838080106814448
+    second: Rem_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 320
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,67 +103,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: curtain_0
+      name: Rem_0
       rect:
         serializedVersion: 2
-        x: 599
-        y: 658
-        width: 320
-        height: 320
+        x: 440
+        y: 796
+        width: 332
+        height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 53ba22aba5a3d37e0800000000000000
-      internalID: -1784205716024546507
+      spriteID: 5fe88cc8d48649c80800000000000000
+      internalID: -8316907929562738955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: curtain_1
+      name: Rem_1
       rect:
         serializedVersion: 2
-        x: 599
-        y: 338
-        width: 320
-        height: 320
+        x: 1092
+        y: 966
+        width: 7
+        height: 12
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4d3fddbbcc51aea4ca5b68d406401dd7
-      internalID: 764914324
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: curtain_2
-      rect:
-        serializedVersion: 2
-        x: 599
-        y: 18
-        width: 320
-        height: 320
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7e61d708cd7a09d43a3d1c80b562cf0c
-      internalID: -1066240029
+      spriteID: 0fbda3d110c566a70800000000000000
+      internalID: 8819838080106814448
       vertices: []
       indices: 
       edges: []
@@ -169,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 0cadcfd697543aa4ebc175c91a9af439
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -179,9 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      curtain_0: -1784205716024546507
-      curtain_1: 764914324
-      curtain_2: -1066240029
+      Rem_0: -8316907929562738955
+      Rem_1: 8819838080106814448
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

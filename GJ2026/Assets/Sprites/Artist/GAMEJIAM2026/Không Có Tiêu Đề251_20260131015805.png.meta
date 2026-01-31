@@ -111,7 +111,7 @@ TextureImporter:
         width: 814
         height: 200
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -133,7 +133,7 @@ TextureImporter:
         width: 7
         height: 12
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -146,11 +146,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015805_2"
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 795
+        width: 316
+        height: 201
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72d6f7c17a06e89489a1842a5fa330c5
+      internalID: 444918225
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 46f4ae58e137dbf45b6172f06277efea
     internalID: 0
     vertices: []
     indices: 
@@ -162,6 +184,7 @@ TextureImporter:
     nameFileIdTable:
       "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015805_0": 8290733516709211993
       "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015805_1": 5894617148311779137
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015805_2": 444918225
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
