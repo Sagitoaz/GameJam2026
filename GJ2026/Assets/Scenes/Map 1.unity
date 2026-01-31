@@ -4672,6 +4672,7 @@ MonoBehaviour:
   readyColor: {r: 0, g: 1, b: 0, a: 0.5}
   winParticles: {fileID: 0}
   winSound: {fileID: 0}
+  winPanel: {fileID: 0}
 --- !u!61 &1301084849
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12111,6 +12112,7 @@ MonoBehaviour:
   dontDestroyOnLoad: 0
   PlayerMode: 0
   CurrentGameMode: {fileID: 0}
+  finalLevelSceneName: Map 3
 --- !u!4 &2052097665
 Transform:
   m_ObjectHideFlags: 0
