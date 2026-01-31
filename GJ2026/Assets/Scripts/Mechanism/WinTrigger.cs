@@ -61,9 +61,18 @@ public class WinTrigger : MonoBehaviour
 
         if (requireBothPlayers)
         {
+            // Điều kiện: 2 player riêng lẻ HOẶC 1 player đang merged
             if (playersInTrigger.Count >= 2)
             {
                 shouldWin = true;
+            }
+            else if (playersInTrigger.Count == 1)
+            {
+                // Kiểm tra nếu player này đang ở trạng thái merged
+                if (GameManager.Instance != null && GameManager.Instance.PlayerMode != PlayerMode.None)
+                {
+                    shouldWin = true;
+                }
             }
         }
         else
@@ -115,7 +124,19 @@ public class WinTrigger : MonoBehaviour
     {
         if (spriteRenderer == null) return;
 
-        bool isReady = requireBothPlayers ? playersInTrigger.Count >= 2 : playersInTrigger.Count > 0;
+        bool isReady = false;
+        
+        if (requireBothPlayers)
+        {
+            // Sẵn sàng nếu: 2 player riêng lẻ HOẶC 1 merged player
+            isReady = playersInTrigger.Count >= 2 || 
+                     (playersInTrigger.Count == 1 && GameManager.Instance != null && GameManager.Instance.PlayerMode != PlayerMode.None);
+        }
+        else
+        {
+            isReady = playersInTrigger.Count > 0;
+        }
+        
         spriteRenderer.color = isReady ? readyColor : normalColor;
     }
 
