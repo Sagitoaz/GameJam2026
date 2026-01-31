@@ -1,0 +1,193 @@
+fileFormatVersion: 2
+guid: c9756e1ee9f298940bb335c7682c4cfb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8471248943688110912
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_0"
+  - first:
+      213: 3426338044612418042
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_1"
+  - first:
+      213: 9104139079718345655
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_2"
+  - first:
+      213: -647453794269335471
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_3"
+  - first:
+      213: 44231597134885920
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_4"
+  - first:
+      213: 2739855941328602301
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_5"
+  - first:
+      213: 6298251889107561516
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_6"
+  - first:
+      213: 8487947370628456201
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_7"
+  - first:
+      213: -3228118225918436654
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_8"
+  - first:
+      213: 683143209598139935
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_9"
+  - first:
+      213: -1338836958322368533
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_10"
+  - first:
+      213: 2241004425880538112
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_11"
+  - first:
+      213: -5778064040554764479
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_12"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_0"
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 759
+        width: 1066
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 043de6c180cef8570800000000000000
+      internalID: 8471248943688110912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f79d2a346a726a84f9e5fd309f8d63b2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_0": 8471248943688110912
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_1": 3426338044612418042
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_10": -1338836958322368533
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_11": 2241004425880538112
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_12": -5778064040554764479
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_2": 9104139079718345655
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_3": -647453794269335471
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_4": 44231597134885920
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_5": 2739855941328602301
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_6": 6298251889107561516
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_7": 8487947370628456201
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_8": -3228118225918436654
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_9": 683143209598139935
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

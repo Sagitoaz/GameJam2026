@@ -15,8 +15,17 @@ public enum OpenCloseMode
     CloseOnRelease     // Đóng khi button bị nhả
 }
 
+public enum DoorControlMode
+{
+    SelfListen,         // Door tự nghe event (DEFAULT)
+    SequenceControlled  // Door bị điều khiển bởi DoorSequenceController
+}
+
 public class Door : MonoBehaviour
 {
+    [Header("Control Mode")]
+    [SerializeField] private DoorControlMode controlMode = DoorControlMode.SelfListen;
+
     [Header("Door Settings")]
     [SerializeField] private string[] listenEventNames = new string[] { "Button01_Pressed" };
     [SerializeField] private bool requireAllEvents = true;
@@ -34,7 +43,10 @@ public class Door : MonoBehaviour
     private Vector3 closedPosition;
     private Vector3 openPosition;
     private bool isOpen = false;
+
     private Coroutine closeCoroutine;
+    private Coroutine animateCoroutine;
+
     private BoxCollider2D doorCollider;
     private HashSet<string> activeEvents = new HashSet<string>();
 
@@ -45,7 +57,12 @@ public class Door : MonoBehaviour
 
         closedPosition = doorVisual.localPosition;
         openPosition = closedPosition + openOffset;
+
         doorCollider = GetComponent<BoxCollider2D>();
+
+        // ❗ Nếu Door bị Sequence điều khiển → KHÔNG tự subscribe event
+        if (controlMode == DoorControlMode.SequenceControlled)
+            return;
 
         foreach (string eventName in listenEventNames)
         {
@@ -57,6 +74,7 @@ public class Door : MonoBehaviour
     private void OnDestroy()
     {
         if (EventManager.Instance == null) return;
+        if (controlMode == DoorControlMode.SequenceControlled) return;
 
         foreach (string eventName in listenEventNames)
         {
@@ -64,6 +82,8 @@ public class Door : MonoBehaviour
             EventManager.Instance.Unsubscribe(eventName + "_Released", () => OnEventReleased(eventName));
         }
     }
+
+    // ===================== EVENT HANDLING =====================
 
     private void OnEventPressed(string eventName)
     {
@@ -79,6 +99,9 @@ public class Door : MonoBehaviour
 
     private void CheckDoorCondition()
     {
+        if (controlMode == DoorControlMode.SequenceControlled)
+            return;
+
         bool shouldOpen;
 
         if (requireAllEvents)
@@ -113,7 +136,10 @@ public class Door : MonoBehaviour
             if (shouldOpen)
             {
                 OpenDoor();
-                if (closeCoroutine != null) StopCoroutine(closeCoroutine);
+
+                if (closeCoroutine != null)
+                    StopCoroutine(closeCoroutine);
+
                 closeCoroutine = StartCoroutine(CloseAfterDelay());
             }
         }
@@ -126,22 +152,41 @@ public class Door : MonoBehaviour
         }
     }
 
-    private void OpenDoor()
-    {
-        isOpen = true;
-        StopAllCoroutines();
-        StartCoroutine(AnimateDoor(openPosition));
+    // ===================== PUBLIC CONTROL =====================
 
-        
+    public void OpenDoor()
+    {
+        if (isOpen) return;
+
+        isOpen = true;
+
+        if (closeCoroutine != null)
+            StopCoroutine(closeCoroutine);
+
+        StartAnimate(openPosition);
+
+        // doorCollider.enabled = false; // bật nếu muốn player đi xuyên
     }
 
-    private void CloseDoor()
+    public void CloseDoor()
     {
+        if (!isOpen) return;
+
         isOpen = false;
-        StopAllCoroutines();
-        StartCoroutine(AnimateDoor(closedPosition));
 
+        StartAnimate(closedPosition);
 
+        // doorCollider.enabled = true;
+    }
+
+    // ===================== ANIMATION =====================
+
+    private void StartAnimate(Vector3 target)
+    {
+        if (animateCoroutine != null)
+            StopCoroutine(animateCoroutine);
+
+        animateCoroutine = StartCoroutine(AnimateDoor(target));
     }
 
     private IEnumerator AnimateDoor(Vector3 targetPosition)

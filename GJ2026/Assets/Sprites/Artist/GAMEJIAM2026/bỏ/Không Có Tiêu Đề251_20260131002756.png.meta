@@ -1,0 +1,611 @@
+fileFormatVersion: 2
+guid: a48a642affc8873438c419ec37e9e590
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1643311791848118557
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_0"
+  - first:
+      213: 5956772101657314693
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_1"
+  - first:
+      213: -1630202912382167327
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_2"
+  - first:
+      213: 7382501174090181152
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_3"
+  - first:
+      213: 4277505265674819958
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_4"
+  - first:
+      213: -8952462141392838542
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_5"
+  - first:
+      213: 1531296551086196084
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_6"
+  - first:
+      213: 5551497714640211907
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_7"
+  - first:
+      213: -5956657772172100847
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_8"
+  - first:
+      213: 2536511233023504808
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_9"
+  - first:
+      213: 8337206483992326833
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_10"
+  - first:
+      213: -5797561530470559545
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_11"
+  - first:
+      213: 346906288573447049
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_12"
+  - first:
+      213: -1367089245519690213
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_13"
+  - first:
+      213: -530651374346969792
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_14"
+  - first:
+      213: -780980353607779432
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_15"
+  - first:
+      213: -4678285974493847441
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_16"
+  - first:
+      213: 3236350716830139254
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_17"
+  - first:
+      213: -6964071003632465164
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_18"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_0"
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 951
+        width: 1593
+        height: 82
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1951583e573ec610800000000000000
+      internalID: 1643311791848118557
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_1"
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 934
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 585cd378aa4baa250800000000000000
+      internalID: 5956772101657314693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_2"
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 913
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e657af961b5069e0800000000000000
+      internalID: -1630202912382167327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_3"
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 934
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 02aac8324b9e37660800000000000000
+      internalID: 7382501174090181152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_4"
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 913
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 679196d3060cc5b30800000000000000
+      internalID: 4277505265674819958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_5"
+      rect:
+        serializedVersion: 2
+        x: 727
+        y: 934
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 270a5255d1772c380800000000000000
+      internalID: -8952462141392838542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_6"
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 913
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 475064d9912404510800000000000000
+      internalID: 1531296551086196084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_7"
+      rect:
+        serializedVersion: 2
+        x: 992
+        y: 934
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3cfc58422c1ea0d40800000000000000
+      internalID: 5551497714640211907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_8"
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 913
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11bbc11e053b55da0800000000000000
+      internalID: -5956657772172100847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_9"
+      rect:
+        serializedVersion: 2
+        x: 1249
+        y: 934
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a17725078f733320800000000000000
+      internalID: 2536511233023504808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_10"
+      rect:
+        serializedVersion: 2
+        x: 1251
+        y: 913
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b23271ff15b3b370800000000000000
+      internalID: 8337206483992326833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_11"
+      rect:
+        serializedVersion: 2
+        x: 1514
+        y: 934
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c015dc318cea8fa0800000000000000
+      internalID: -5797561530470559545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_12"
+      rect:
+        serializedVersion: 2
+        x: 1516
+        y: 913
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98bf4c47e6570d400800000000000000
+      internalID: 346906288573447049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_13"
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 758
+        width: 38
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b16ca88039f170de0800000000000000
+      internalID: -1367089245519690213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_14"
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 759
+        width: 41
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04dd974f26fb2a8f0800000000000000
+      internalID: -530651374346969792
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_15"
+      rect:
+        serializedVersion: 2
+        x: 722
+        y: 758
+        width: 43
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 89b36a691866925f0800000000000000
+      internalID: -780980353607779432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_16"
+      rect:
+        serializedVersion: 2
+        x: 993
+        y: 759
+        width: 41
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f602a9c51b3631fb0800000000000000
+      internalID: -4678285974493847441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_17"
+      rect:
+        serializedVersion: 2
+        x: 1235
+        y: 758
+        width: 38
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 673cd3d74d3d9ec20800000000000000
+      internalID: 3236350716830139254
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_18"
+      rect:
+        serializedVersion: 2
+        x: 1515
+        y: 759
+        width: 41
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4fa83e5c156aa5f90800000000000000
+      internalID: -6964071003632465164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_0": 1643311791848118557
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_1": 5956772101657314693
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_10": 8337206483992326833
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_11": -5797561530470559545
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_12": 346906288573447049
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_13": -1367089245519690213
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_14": -530651374346969792
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_15": -780980353607779432
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_16": -4678285974493847441
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_17": 3236350716830139254
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_18": -6964071003632465164
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_2": -1630202912382167327
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_3": 7382501174090181152
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_4": 4277505265674819958
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_5": -8952462141392838542
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_6": 1531296551086196084
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_7": 5551497714640211907
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_8": -5956657772172100847
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131002756_9": 2536511233023504808
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
