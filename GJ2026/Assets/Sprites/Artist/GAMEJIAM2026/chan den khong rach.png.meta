@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: df5fd6767b7bee947ac6c2a848af53f7
+guid: 9a174170f543ab244bda3c0036813d7a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4373184736405950995
-    second: floor_0
+      213: -120557587755396912
+    second: chan den khong rach_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 310
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: floor_0
+      name: chan den khong rach_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 9
-        width: 320
-        height: 307
+        x: 2
+        y: 0
+        width: 1918
+        height: 318
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,152 +115,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dedec5107a35f43c0800000000000000
-      internalID: -4373184736405950995
+      spriteID: 0d09cde3381b35ef0800000000000000
+      internalID: -120557587755396912
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor_1
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 9
-        width: 320
-        height: 307
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b5f0421f6dc86e74dbfc37c605c6c622
-      internalID: -192994248
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_2
-      rect:
-        serializedVersion: 2
-        x: 640
-        y: 9
-        width: 320
-        height: 307
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5af976cb112f3f64db827344e58ce4ea
-      internalID: 72085239
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_3
-      rect:
-        serializedVersion: 2
-        x: 960
-        y: 9
-        width: 320
-        height: 307
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c99d6391894f27442a49a09b68116791
-      internalID: 487841800
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_4
-      rect:
-        serializedVersion: 2
-        x: 1280
-        y: 9
-        width: 320
-        height: 307
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 21925e6025ebd4d4c9534f5725c43c9f
-      internalID: -1579707994
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_5
-      rect:
-        serializedVersion: 2
-        x: 1600
-        y: 9
-        width: 320
-        height: 307
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 509044a51d030a04c8693a6e08ca83e1
-      internalID: -1785093076
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_6
-      rect:
-        serializedVersion: 2
-        x: 320
-        y: 59
-        width: 320
-        height: 157
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c832693397680f348bcefed150746b3d
-      internalID: -1439263808
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_7
+      name: chan den khong rach_1
       rect:
         serializedVersion: 2
         x: 0
-        y: 9
-        width: 1919
-        height: 307
+        y: 3
+        width: 320
+        height: 315
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -269,8 +137,118 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6c42e0b776d3a5c40976d22e9bd2399d
-      internalID: -1963692104
+      spriteID: d1e99d9cd386eca4c87ef87f015a1968
+      internalID: 327093512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chan den khong rach_2
+      rect:
+        serializedVersion: 2
+        x: 1562
+        y: 0
+        width: 358
+        height: 318
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d57d0ec3d600d794cb7b37689209c296
+      internalID: -1060442447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chan den khong rach_3
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 0
+        width: 326
+        height: 318
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d70f2c31797daa489343a44a0d5f71c
+      internalID: 869603092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chan den khong rach_4
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 0
+        width: 322
+        height: 235
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f27859d31394cbc45b246b725003e076
+      internalID: -1839275754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chan den khong rach_5
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 0
+        width: 322
+        height: 235
+      alignment: 9
+      pivot: {x: 0.5059532, y: 0.010570368}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00a663d92d85e6d41a2cfd2f02ff77b8
+      internalID: -1795949265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: chan den khong rach_6
+      rect:
+        serializedVersion: 2
+        x: 481
+        y: 1
+        width: 1083
+        height: 317
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f328c6868f23aef4ea860d9b23e9d3c5
+      internalID: 2055780319
       vertices: []
       indices: 
       edges: []
@@ -279,7 +257,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2544536ccc2978948b8788b349d49521
+    spriteID: b7bc09f0084a021498755dfa5727a6b1
     internalID: 0
     vertices: []
     indices: 
@@ -287,18 +265,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":6.0,"y":3.0},"gridSpriteSize":{"x":320.0,"y":360.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-      floor_0: -4373184736405950995
-      floor_1: -192994248
-      floor_2: 72085239
-      floor_3: 487841800
-      floor_4: -1579707994
-      floor_5: -1785093076
-      floor_6: -1439263808
-      floor_7: -1963692104
+      chan den khong rach_0: -120557587755396912
+      chan den khong rach_1: 327093512
+      chan den khong rach_2: -1060442447
+      chan den khong rach_3: 869603092
+      chan den khong rach_4: -1839275754
+      chan den khong rach_5: -1795949265
+      chan den khong rach_6: 2055780319
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

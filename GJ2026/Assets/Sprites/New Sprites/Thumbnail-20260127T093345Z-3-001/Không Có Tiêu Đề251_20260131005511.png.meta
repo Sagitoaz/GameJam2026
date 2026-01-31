@@ -178,7 +178,7 @@ TextureImporter:
       name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131005511_0"
       rect:
         serializedVersion: 2
-        x: 115
+        x: 98
         y: 743
         width: 1054
         height: 337
@@ -192,6 +192,28 @@ TextureImporter:
       bones: []
       spriteID: 8960311c724ed1850800000000000000
       internalID: 6349481909056374424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131005511_1"
+      rect:
+        serializedVersion: 2
+        x: 707
+        y: 740
+        width: 339
+        height: 289
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8707cbc33a617fa49874d37bca2b0d8f
+      internalID: 2109499986
       vertices: []
       indices: 
       edges: []
@@ -213,6 +235,7 @@ TextureImporter:
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1920.0,"y":1080.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
       "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131005511_0": 6349481909056374424
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131005511_1": 2109499986
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
