@@ -34,9 +34,9 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "ChangeMode",
+                    "name": "VerticalSplit",
                     "type": "Button",
-                    "id": "f6997530-4199-468a-b159-e3f0b8669542",
+                    "id": "fb9005c5-6d3b-4841-abbc-2f9ce8501e88",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -145,12 +145,12 @@
                 },
                 {
                     "name": "",
-                    "id": "5e563d82-95c1-4628-b697-b9fa0f0d7630",
+                    "id": "9c18a348-a01a-44a6-86ff-7ee3320cca11",
                     "path": "<Keyboard>/q",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ChangeMode",
+                    "action": "VerticalSplit",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

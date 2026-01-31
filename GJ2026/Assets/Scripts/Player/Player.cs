@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private bool flipSprite = true; // Tự động flip sprite theo hướng di chuyển
     
     [Header("Jump")]
     [SerializeField] private float jumpForce = 8f;
@@ -13,12 +14,18 @@ public class Player : MonoBehaviour
     [Header("References")]
     [SerializeField] private GroundDetector groundDetector;
     [SerializeField] private bool canShow;
-    
+    [SerializeField] private PlayerAfterImageVFX afterImageVFX;
+
+    private PlayerVFX vfx;
     private SpriteRenderer sprite;
     private Rigidbody2D rb;
     private BoxCollider2D col;
     private Vector2 moveInput;
     private bool isKnockback;
+    private float lastHorizontalDirection = 1f; // 1 = phải, -1 = trái, mặc định là phải
+    
+    public Vector2 MoveInput => moveInput;
+    public float LastHorizontalDirection => lastHorizontalDirection;
     
     public PlayerState State { get; private set; } = PlayerState.Control;
 
@@ -27,6 +34,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        vfx = GetComponent<PlayerVFX>();
     }
 
     private void Start()
@@ -39,6 +47,12 @@ public class Player : MonoBehaviour
     {
         if (State == PlayerState.Free) return;
         moveInput = context.ReadValue<Vector2>();
+        
+        // Lưu hướng ngang cuối cùng nếu có input ngang
+        if (Mathf.Abs(moveInput.x) > 0.1f)
+        {
+            lastHorizontalDirection = Mathf.Sign(moveInput.x);
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
@@ -47,6 +61,7 @@ public class Player : MonoBehaviour
         if (context.performed && groundDetector.IsGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            afterImageVFX?.PlayJumpAfterImage();
         }
     }
 
@@ -58,6 +73,21 @@ public class Player : MonoBehaviour
         
         float targetSpeed = moveInput.x * moveSpeed;
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+
+        // Flip sprite theo hướng di chuyển
+        if (flipSprite && Mathf.Abs(moveInput.x) > 0.1f)
+        {
+            FlipSprite(moveInput.x > 0);
+        }
+    }
+
+    private void FlipSprite(bool faceRight)
+    {
+        if (sprite != null)
+        {
+            // Flip sprite renderer (an toàn vì sprite là object con)
+            sprite.flipX = !faceRight;
+        }
     }
     public void ApplyKnockback(Vector2 velocity)
     {
@@ -108,6 +138,33 @@ public class Player : MonoBehaviour
         sprite.enabled = true;
         rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 3f;
+    }
+
+    /// <summary>
+    /// Phát hiệu ứng after image khi merge/split và tắt trail
+    /// </summary>
+    public void PlayMergeSplitEffect()
+    {
+        if (afterImageVFX != null)
+        {
+            afterImageVFX.PlayJumpAfterImage();
+        }
+        
+        if (vfx != null)
+        {
+            vfx.EnableTrail(false);
+        }
+    }
+
+    /// <summary>
+    /// Bật lại trail sau khi split
+    /// </summary>
+    public void EnableTrailAfterSplit()
+    {
+        if (vfx != null)
+        {
+            vfx.EnableTrail(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

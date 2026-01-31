@@ -1,0 +1,312 @@
+fileFormatVersion: 2
+guid: 577e95223e9853a468f2094822f7f7e0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8471248943688110912
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_0"
+  - first:
+      213: 3426338044612418042
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_1"
+  - first:
+      213: 9104139079718345655
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_2"
+  - first:
+      213: -647453794269335471
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_3"
+  - first:
+      213: 44231597134885920
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_4"
+  - first:
+      213: 2739855941328602301
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_5"
+  - first:
+      213: 6298251889107561516
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_6"
+  - first:
+      213: 8487947370628456201
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_7"
+  - first:
+      213: -3228118225918436654
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_8"
+  - first:
+      213: 683143209598139935
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_9"
+  - first:
+      213: -1338836958322368533
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_10"
+  - first:
+      213: 2241004425880538112
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_11"
+  - first:
+      213: -5778064040554764479
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_12"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_0"
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 952
+        width: 1178
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 043de6c180cef8570800000000000000
+      internalID: 8471248943688110912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_1"
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 760
+        width: 78
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0312b4112d00dd1449a75acfa4f30140
+      internalID: 999089820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_2"
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 760
+        width: 78
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f45a04d26acd4d41a138cb066bda2d7
+      internalID: -533982349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_3"
+      rect:
+        serializedVersion: 2
+        x: 442
+        y: 760
+        width: 78
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6abea66c16f24f0498a85f133e69ac9a
+      internalID: 677187489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_4"
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 761
+        width: 78
+        height: 188
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11ef587bd81e56c40a98adb8c8c05a71
+      internalID: -1213025028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c867cda5a4e06d243a5a1a9d43dd562a
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":1920.0,"y":1080.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_0": 8471248943688110912
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_1": 999089820
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_2": -533982349
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_3": 677187489
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015810_4": -1213025028
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
