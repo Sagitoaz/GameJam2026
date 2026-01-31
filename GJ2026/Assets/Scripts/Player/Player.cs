@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private bool flipSprite = true; // Tự động flip sprite theo hướng di chuyển
     
     [Header("Jump")]
     [SerializeField] private float jumpForce = 8f;
@@ -17,6 +18,7 @@ public class Player : MonoBehaviour
     private SpriteRenderer sprite;
     private Rigidbody2D rb;
     private BoxCollider2D col;
+    private PlayerVFX vfx;
     private Vector2 moveInput;
     private bool isKnockback;
     private float lastHorizontalDirection = 1f; // 1 = phải, -1 = trái, mặc định là phải
@@ -31,6 +33,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        vfx = GetComponent<PlayerVFX>();
     }
 
     private void Start()
@@ -57,6 +60,12 @@ public class Player : MonoBehaviour
         if (context.performed && groundDetector.IsGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            
+            // Play jump effect
+            if (vfx != null)
+            {
+                vfx.PlayJumpEffect();
+            }
         }
     }
 
@@ -66,8 +75,29 @@ public class Player : MonoBehaviour
         
         groundDetector.Check();
         
+        // Check landing effect
+        if (vfx != null)
+        {
+            vfx.CheckLanding(groundDetector.IsGrounded);
+        }
+        
         float targetSpeed = moveInput.x * moveSpeed;
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
+        
+        // Flip sprite theo hướng di chuyển
+        if (flipSprite && Mathf.Abs(moveInput.x) > 0.1f)
+        {
+            FlipSprite(moveInput.x > 0);
+        }
+    }
+
+    private void FlipSprite(bool faceRight)
+    {
+        if (sprite != null)
+        {
+            // Flip sprite renderer (an toàn vì sprite là object con)
+            sprite.flipX = !faceRight;
+        }
     }
     public void ApplyKnockback(Vector2 velocity)
     {
