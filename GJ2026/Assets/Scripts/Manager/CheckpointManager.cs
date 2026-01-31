@@ -79,10 +79,15 @@ public class CheckpointManager : Singleton<CheckpointManager>
             GameManager.Instance.PlayerMode = PlayerMode.None;
         }
 
-        // Ẩn merged player nếu đang hiện
-        if (playerMerged != null && playerMerged.gameObject.activeSelf)
+        // Ẩn merged player nếu đang hiện và reset vị trí về checkpoint
+        if (playerMerged != null)
         {
+            playerMerged.transform.position = currentCheckpointPosition;
             playerMerged.SetHide();
+            
+            // Reset velocity của merged player
+            Rigidbody2D rbMerged = playerMerged.GetComponent<Rigidbody2D>();
+            if (rbMerged != null) rbMerged.linearVelocity = Vector2.zero;
         }
 
         // Spawn 2 player riêng lẻ tại checkpoint
