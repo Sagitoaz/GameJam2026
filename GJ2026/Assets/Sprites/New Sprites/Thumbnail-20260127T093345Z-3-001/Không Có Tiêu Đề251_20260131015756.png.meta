@@ -145,9 +145,9 @@ TextureImporter:
         x: 0
         y: 0
         width: 1920
-        height: 320
+        height: 314
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -160,11 +160,33 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015756_1"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 236
+        width: 1920
+        height: 78
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c76f11217783bb642b8dfd3ba0b1f567
+      internalID: 171008483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: fa3628c3491d1a14abc8454ef90d64d4
     internalID: 0
     vertices: []
     indices: 
@@ -175,6 +197,7 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015756_0": 854263341070992737
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131015756_1": 171008483
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

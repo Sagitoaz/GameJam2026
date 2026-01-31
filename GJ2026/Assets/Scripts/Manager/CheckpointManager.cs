@@ -11,6 +11,7 @@ public class CheckpointManager : Singleton<CheckpointManager>
     [Header("Checkpoint Settings")]
     [SerializeField] private Vector3 defaultSpawnPosition = Vector3.zero;
     [SerializeField] private float respawnDelay = 1f;
+    [SerializeField] private GameObject loseScreenUI;
 
     private Vector3 currentCheckpointPosition;
     private bool hasCheckpoint = false;
@@ -69,6 +70,7 @@ public class CheckpointManager : Singleton<CheckpointManager>
     private System.Collections.IEnumerator RespawnRoutine()
     {
         // Fade out hoặc effect (có thể thêm sau)
+        loseScreenUI.SetActive(true);
         yield return new WaitForSeconds(respawnDelay);
 
         // Reset game state
@@ -90,14 +92,18 @@ public class CheckpointManager : Singleton<CheckpointManager>
             player1.transform.position = currentCheckpointPosition + Vector3.left * 0.5f;
             player2.transform.position = currentCheckpointPosition + Vector3.right * 0.5f;
 
-            player1.SetShow();
-            player2.SetShow();
-
-            // Reset velocity
+            // Reset velocity trước khi SetShow
             Rigidbody2D rb1 = player1.GetComponent<Rigidbody2D>();
             Rigidbody2D rb2 = player2.GetComponent<Rigidbody2D>();
             if (rb1 != null) rb1.linearVelocity = Vector2.zero;
             if (rb2 != null) rb2.linearVelocity = Vector2.zero;
+
+            // Delay nhỏ để đảm bảo position đã set xong
+            yield return new WaitForSeconds(0.1f);
+
+            // Bật lại control
+            player1.SetShow();
+            player2.SetShow();
         }
 
         // Resume game
@@ -105,6 +111,7 @@ public class CheckpointManager : Singleton<CheckpointManager>
         AudioListener.pause = false;
 
         Debug.Log("<color=green>[Checkpoint] Đã respawn!</color>");
+        loseScreenUI.SetActive(false);
     }
 
     /// <summary>
