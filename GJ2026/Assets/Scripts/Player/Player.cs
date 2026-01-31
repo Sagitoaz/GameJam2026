@@ -136,6 +136,19 @@ public class Player : MonoBehaviour
         moveInput = Vector2.zero;
     }
 
+    /// <summary>
+    /// Set state Dead - không thể điều khiển, không physics
+    /// </summary>
+    public void SetDead()
+    {
+        State = PlayerState.Free;
+        rb.simulated = false;
+        col.enabled = false;
+        rb.linearVelocity = Vector2.zero;
+        moveInput = Vector2.zero;
+        isKnockback = false;
+    }
+
     public void SetShow()
     {
         State = PlayerState.Control;
@@ -177,6 +190,16 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("Trap"))
         {
+            // Disable tất cả player ngay lập tức
+            Player[] allPlayers = FindObjectsByType<Player>(FindObjectsSortMode.None);
+            foreach (Player p in allPlayers)
+            {
+                if (p.State == PlayerState.Control)
+                {
+                    p.SetDead();
+                }
+            }
+            
             GameManager.Instance.TriggerEndGame();
         }
     }

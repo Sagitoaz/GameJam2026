@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 5e85c3c33253dd240bd1b2b93485fefd
+guid: 59631abb74f4dc64fbedc19a0d2768ce
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4373184736405950995
-    second: floor_0
+      213: 987960431759129886
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131174413_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,111 +139,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: floor_0
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131174413_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1918
-        height: 317
+        x: 740
+        y: 235
+        width: 387
+        height: 368
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dedec5107a35f43c0800000000000000
-      internalID: -4373184736405950995
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_1
-      rect:
-        serializedVersion: 2
-        x: 728
-        y: 0
-        width: 264
-        height: 318
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2749eb46d6236384b8a02432674de6c1
-      internalID: -1193481274
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 105
-        height: 317
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 15a77188883a2944b8796e7c713fba22
-      internalID: 307700805
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_3
-      rect:
-        serializedVersion: 2
-        x: 1815
-        y: 0
-        width: 105
-        height: 317
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2560dc2865e329644b102ec42ab3da4c
-      internalID: 289678650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 235
-        width: 1920
-        height: 84
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 440eb8e8826479744b6f43f0ff408021
-      internalID: 1981949127
+      spriteID: e1df42b37c0f5bd00800000000000000
+      internalID: 987960431759129886
       vertices: []
       indices: 
       edges: []
@@ -252,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b843882de5cc3724795423a26e07cc8d
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -262,11 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      floor_0: -4373184736405950995
-      floor_1: -1193481274
-      floor_2: 307700805
-      floor_3: 289678650
-      floor_4: 1981949127
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131174413_0": 987960431759129886
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

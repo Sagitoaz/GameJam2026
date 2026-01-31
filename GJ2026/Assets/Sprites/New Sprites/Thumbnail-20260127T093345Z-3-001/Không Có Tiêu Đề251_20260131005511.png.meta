@@ -178,12 +178,12 @@ TextureImporter:
       name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131005511_0"
       rect:
         serializedVersion: 2
-        x: 75
+        x: 115
         y: 743
-        width: 1114
+        width: 1054
         height: 337
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []

@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 5e85c3c33253dd240bd1b2b93485fefd
+guid: b1f80e734e691514ca6f17988e0b57c3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4373184736405950995
-    second: floor_0
+      213: -3497543654604533032
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131151331_0"
+  - first:
+      213: -4809278400396652604
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131151331_1"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -139,111 +142,45 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: floor_0
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131151331_0"
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 1918
-        height: 317
+        x: 440
+        y: 796
+        width: 332
+        height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: dedec5107a35f43c0800000000000000
-      internalID: -4373184736405950995
+      spriteID: 8d210e0b39a367fc0800000000000000
+      internalID: -3497543654604533032
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: floor_1
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131151331_1"
       rect:
         serializedVersion: 2
-        x: 728
-        y: 0
-        width: 264
-        height: 318
+        x: 1092
+        y: 966
+        width: 7
+        height: 12
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 2749eb46d6236384b8a02432674de6c1
-      internalID: -1193481274
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 105
-        height: 317
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 15a77188883a2944b8796e7c713fba22
-      internalID: 307700805
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_3
-      rect:
-        serializedVersion: 2
-        x: 1815
-        y: 0
-        width: 105
-        height: 317
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2560dc2865e329644b102ec42ab3da4c
-      internalID: 289678650
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: floor_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 235
-        width: 1920
-        height: 84
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 440eb8e8826479744b6f43f0ff408021
-      internalID: 1981949127
+      spriteID: 4cf066686c2024db0800000000000000
+      internalID: -4809278400396652604
       vertices: []
       indices: 
       edges: []
@@ -252,7 +189,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: b843882de5cc3724795423a26e07cc8d
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -262,11 +199,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      floor_0: -4373184736405950995
-      floor_1: -1193481274
-      floor_2: 307700805
-      floor_3: 289678650
-      floor_4: 1981949127
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131151331_0": -3497543654604533032
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131151331_1": -4809278400396652604
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
