@@ -10,6 +10,7 @@ public class LevelSelectController : MonoBehaviour
     
     [Header("Settings")]
     public float loadingTime = 1.5f;
+    public GameObject letterPanel;
 
     private bool isLoading = false;
 
@@ -39,5 +40,9 @@ public class LevelSelectController : MonoBehaviour
         yield return new WaitForSeconds(loadingTime);
         
         SceneManager.LoadScene(sceneName);
+    }
+
+    public void OnClickLetterButton() {
+        letterPanel.SetActive(true);
     }
 }

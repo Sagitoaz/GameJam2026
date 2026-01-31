@@ -1,8 +1,18 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class GameManager : Singleton<GameManager>
 {
+    private const string GameCompletedKey = "GameCompleted";
+    
     public PlayerMode PlayerMode;
     public Player CurrentGameMode;
+    
+    [Header("Win Settings")]
+    [Tooltip("Tên scene khi hoàn thành sẽ đánh dấu game completed")]
+    public string finalLevelSceneName = "Map 3";
     
     private bool isPaused = false;
     public bool IsPaused => isPaused;
@@ -61,35 +71,47 @@ public class GameManager : Singleton<GameManager>
 
     public void WinGame()
     {
-        WinGame("LevelSelect");
+        WinGame("MainMenu");
     }
 
     public void WinGame(string targetSceneName)
     {
         UnityEngine.Debug.Log($"<color=green>YOU WIN! Loading scene: {targetSceneName}</color>");
         
-        // Có thể thêm delay, show UI, v.v.
+        // Kiểm tra xem có phải final level không
+        string currentSceneName = SceneManager.GetActiveScene().name;
+        if (currentSceneName == finalLevelSceneName)
+        {
+            MarkGameCompleted();
+        }
+        
         StartCoroutine(WinGameRoutine(targetSceneName));
     }
 
-    private System.Collections.IEnumerator WinGameRoutine(string sceneName)
+    private void MarkGameCompleted()
     {
-        // Show win UI hoặc effects
-        // TODO: PanelManager.Instance.ShowPanel("WinPanel");
+        PlayerPrefs.SetInt(GameCompletedKey, 1);
+        PlayerPrefs.Save();
+        Debug.Log($"<color=yellow>[GameManager] GAME COMPLETED! Final level '{finalLevelSceneName}' beaten!</color>");
+    }
+
+    public static bool IsGameCompleted()
+    {
+        return PlayerPrefs.GetInt(GameCompletedKey, 0) == 1;
+    }
+
+
+    private IEnumerator WinGameRoutine(string sceneName)
+    {
+        yield return new WaitForSeconds(1.5f);
         
-        yield return new WaitForSeconds(1.5f); // Delay để player thấy
-        
-        // Load scene
         if (!string.IsNullOrEmpty(sceneName))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("LevelSelect");
+            SceneManager.LoadScene(sceneName);
         }
         else
         {
-            // Fallback: reload current scene
-            UnityEngine.SceneManagement.SceneManager.LoadScene(
-                UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
-            );
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }
 }
