@@ -1913,14 +1913,14 @@ MonoBehaviour:
   player2: {fileID: 411057695}
   mergeDistance: 6
   splitDistance: 8
-  minZoom: 5
+  minZoom: 7
   maxZoom: 10
   zoomPadding: 2
   splitCameraZoom: 7
   positionSmoothTime: 0.3
   zoomSmoothTime: 0.3
-  splitTransitionSpeed: 20
-  splitLineThickness: 0.02
+  splitTransitionSpeed: 4
+  splitLineThickness: 0.005
   splitLineColor: {r: 0, g: 0, b: 0, a: 1}
   useBounds: 1
   boundsMin: {x: -11, y: -7}
