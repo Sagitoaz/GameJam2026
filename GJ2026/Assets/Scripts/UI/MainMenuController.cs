@@ -58,16 +58,19 @@ public class MainMenuController : MonoBehaviour
 
     public void OnClickSetting()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.click);
         PanelManager.Instance.OpenPanel(GameConfig.PANEL_SETTING);
     }
     
     public void OnClickManual()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.click);
         PanelManager.Instance.OpenPanel(GameConfig.PANEL_MANUAL);
     }
 
     public void OnClickQuit()
     {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.click);
         Application.Quit();
     }
     
