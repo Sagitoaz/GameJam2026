@@ -1920,6 +1920,7 @@ MonoBehaviour:
   positionSmoothTime: 0.3
   zoomSmoothTime: 0.3
   splitTransitionSpeed: 4
+  useInterpolation: 1
   splitLineThickness: 0.005
   splitLineColor: {r: 0, g: 0, b: 0, a: 1}
   useBounds: 1
@@ -13529,7 +13530,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
@@ -14124,6 +14125,10 @@ PrefabInstance:
       propertyPath: pool
       value: 
       objectReference: {fileID: 245561223}
+    - target: {fileID: 4866895330342936388, guid: bc6a4a2b03374a54c87e4a50d1587898, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5151841961923841045, guid: bc6a4a2b03374a54c87e4a50d1587898, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -14435,6 +14440,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2066115562856303419, guid: 252169211ad4eec49ab1501f5b3e009f, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3245453639238596871, guid: 252169211ad4eec49ab1501f5b3e009f, type: 3}
       propertyPath: m_Name
       value: Player 1
