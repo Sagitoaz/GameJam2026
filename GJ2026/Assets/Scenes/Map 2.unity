@@ -63871,7 +63871,7 @@ MonoBehaviour:
   _maxMergeDistance: 8
   _mergeSpeed: 15
   _splitForceP1: 10
-  _splitForceP2: 30
+  _splitForceP2: 45
   _splitForceVertical: 20
   _splitNoGravityDuration: 0.3
 --- !u!114 &2057120000
