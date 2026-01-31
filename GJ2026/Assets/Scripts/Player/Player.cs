@@ -35,12 +35,6 @@ public class Player : MonoBehaviour
         col = GetComponent<BoxCollider2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
         vfx = GetComponent<PlayerVFX>();
-        
-        // Bật interpolation để fix camera jitter
-        if (rb != null)
-        {
-            rb.interpolation = RigidbodyInterpolation2D.Interpolate;
-        }
     }
 
     private void Start()

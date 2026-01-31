@@ -160,7 +160,6 @@ public class PlayerMergeSplitController : MonoBehaviour
 
     private void SplitVertical()
     {
-        Debug.Log("[PlayerMergeSplitController] Split Vertical");
         Player mergedPlayer = GameManager.Instance.CurrentGameMode;
         Vector3 centerPos = mergedPlayer.transform.position;
 
@@ -185,7 +184,6 @@ public class PlayerMergeSplitController : MonoBehaviour
 
     private void SplitHorizontal()
     {
-        
         Player mergedPlayer = GameManager.Instance.CurrentGameMode;
         Vector3 centerPos = mergedPlayer.transform.position;
 

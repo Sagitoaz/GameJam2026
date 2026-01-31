@@ -15,11 +15,9 @@ public class DynamicCameraController : MonoBehaviour
     [SerializeField] private float splitCameraZoom = 7f; // Zoom của split cameras (càng lớn càng rộng)
     
     [Header("Smooth Settings")]
-    [SerializeField] private float positionSmoothTime = 0.15f; // Giảm để responsive hơn
+    [SerializeField] private float positionSmoothTime = 0.3f;
     [SerializeField] private float zoomSmoothTime = 0.3f;
     [SerializeField] private float splitTransitionSpeed = 5f;
-    [SerializeField] private bool useInterpolation = true; // Fix camera jittering
-    [SerializeField] private float mergeTransitionDuration = 0.6f; // Thời gian slide camera khi merge/split (It Takes Two style)
     
     [Header("Split Screen Settings")]
     [SerializeField] private float splitLineThickness = 0.02f;
@@ -36,7 +34,6 @@ public class DynamicCameraController : MonoBehaviour
     private Camera player2Camera;
     
     private bool isSplit = false;
-    private bool wasSplit = false; // Track previous state để detect transition
     private Vector3 positionVelocity;
     private float zoomVelocity;
     private float splitTransition = 0f; // 0 = merged, 1 = split
@@ -44,27 +41,6 @@ public class DynamicCameraController : MonoBehaviour
     // Velocity riêng cho mỗi split camera
     private Vector3 player1CamVelocity;
     private Vector3 player2CamVelocity;
-    
-    // Cache positions để tránh jitter
-    private Vector3 lastTargetPosition;
-    private Vector3 lastPlayer1Position;
-    private Vector3 lastPlayer2Position;
-    
-    // Cache Rigidbody2D references để tránh GetComponent mỗi frame
-    private Rigidbody2D player1Rb;
-    private Rigidbody2D player2Rb;
-    private Rigidbody2D mergedPlayerRb;
-    private Transform cachedMergedTransform;
-    
-    // Smooth interpolation variables
-    private Vector3 currentVelocity;
-    private float currentZoomVelocity;
-    
-    // Transition smoothing (It Takes Two style)
-    private bool isTransitioning = false;
-    private float transitionTimer = 0f;
-    private Vector3 transitionStartPos;
-    private float transitionStartZoom;
     
     private void Start()
     {
@@ -76,10 +52,6 @@ public class DynamicCameraController : MonoBehaviour
         }
         
         SetupSplitCameras();
-        
-        // Cache Rigidbody2D references
-        if (player1 != null) player1Rb = player1.GetComponent<Rigidbody2D>();
-        if (player2 != null) player2Rb = player2.GetComponent<Rigidbody2D>();
     }
     
     private void SetupSplitCameras()
@@ -109,25 +81,11 @@ public class DynamicCameraController : MonoBehaviour
         
         // Check trạng thái merge/separate từ GameManager
         bool shouldBeMerged = GameManager.Instance.PlayerMode != PlayerMode.None;
-        bool newIsSplit = !shouldBeMerged;
         
-        // Detect state change và bắt đầu smooth transition
-        if (newIsSplit != isSplit)
+        // Trigger transition khi thay đổi trạng thái
+        if (shouldBeMerged != !isSplit)
         {
-            OnCameraStateChanged(isSplit, newIsSplit);
-            wasSplit = isSplit;
-            isSplit = newIsSplit;
-        }
-        
-        // Update transition timer
-        if (isTransitioning)
-        {
-            transitionTimer += Time.deltaTime;
-            if (transitionTimer >= mergeTransitionDuration)
-            {
-                isTransitioning = false;
-                transitionTimer = 0f;
-            }
+            isSplit = !shouldBeMerged;
         }
         
         // Smooth transition với wipe effect
@@ -143,64 +101,13 @@ public class DynamicCameraController : MonoBehaviour
         {
             // Hoàn toàn split
             UpdateSplitCamera();
-            // QUAN TRỌNG: Vẫn cập nhật vị trí main camera (dù disabled) để khi merge không bị giật
-            UpdateMainCameraPositionSilent();
         }
         else
         {
             // Đang transition với wipe effect
             UpdateWipeTransition();
         }
-    }
-    
-    /// <summary>
-    /// Cập nhật vị trí main camera mà không bật/tắt nó
-    /// Dùng khi đang split để main camera luôn ở đúng vị trí khi cần merge
-    /// </summary>
-    private void UpdateMainCameraPositionSilent()
-    {
-        // Tính vị trí target dựa trên players
-        Vector3 p1Pos = GetPlayerPositionCached(player1, player1Rb);
-        Vector3 p2Pos = GetPlayerPositionCached(player2, player2Rb);
-        Vector3 midpoint = (p1Pos + p2Pos) * 0.5f;
-        Vector3 targetPosition = new Vector3(midpoint.x, midpoint.y, mainCamera.transform.position.z);
-        
-        // Auto zoom để fit cả 2 player
-        float distance = Vector2.Distance(p1Pos, p2Pos);
-        float targetZoom = Mathf.Clamp(distance * 0.5f + zoomPadding, minZoom, maxZoom);
-        
-        if (useBounds)
-        {
-            targetPosition = ApplyBounds(targetPosition);
-        }
-        
-        // Cập nhật trực tiếp (không smooth) để luôn sẵn sàng khi merge
-        mainCamera.transform.position = targetPosition;
-        mainCamera.orthographicSize = targetZoom;
-    }
-    
-    /// <summary>
-    /// Được gọi khi camera chuyển từ split sang merge hoặc ngược lại
-    /// Reset velocity và setup smooth transition giống It Takes Two
-    /// </summary>
-    private void OnCameraStateChanged(bool wasSplit, bool nowSplit)
-    {
-        // Reset tất cả velocity để tránh camera giật
-        currentVelocity = Vector3.zero;
-        currentZoomVelocity = 0f;
-        positionVelocity = Vector3.zero;
-        zoomVelocity = 0f;
-        player1CamVelocity = Vector3.zero;
-        player2CamVelocity = Vector3.zero;
-        
-        // Bắt đầu smooth transition
-        isTransitioning = true;
-        transitionTimer = 0f;
-        
-        // Main camera đã được cập nhật vị trí liên tục trong UpdateMainCameraPositionSilent()
-        // nên không cần snap nữa - chỉ cần lưu vị trí hiện tại làm start
-        transitionStartPos = mainCamera.transform.position;
-        transitionStartZoom = mainCamera.orthographicSize;
+        UpdateMergedCamera(false);
     }
     
     private void UpdateMergedCamera(bool isMerged)
@@ -212,44 +119,25 @@ public class DynamicCameraController : MonoBehaviour
             player2Camera.enabled = false;
         }
         
+        
         Vector3 targetPosition;
         float targetZoom;
         
         // Nếu đang merged, follow merged player
         if (GameManager.Instance.PlayerMode != PlayerMode.None && GameManager.Instance.CurrentGameMode != null)
         {
-            // Cache merged player reference để tránh GetComponent mỗi frame
-            Transform currentMergedTransform = GameManager.Instance.CurrentGameMode.transform;
-            if (cachedMergedTransform != currentMergedTransform)
-            {
-                cachedMergedTransform = currentMergedTransform;
-                mergedPlayerRb = currentMergedTransform.GetComponent<Rigidbody2D>();
-            }
-            
-            Vector3 mergedPos;
-            if (useInterpolation && mergedPlayerRb != null)
-            {
-                // Lấy position từ Rigidbody2D để sync với physics interpolation
-                mergedPos = mergedPlayerRb.position;
-            }
-            else
-            {
-                mergedPos = currentMergedTransform.position;
-            }
-            
+            Vector3 mergedPos = GameManager.Instance.CurrentGameMode.transform.position;
             targetPosition = new Vector3(mergedPos.x, mergedPos.y, mainCamera.transform.position.z);
-            targetZoom = minZoom;
+            targetZoom = minZoom; // Zoom in khi merged
         }
         else
         {
             // Tính midpoint giữa 2 player separate
-            Vector3 p1Pos = GetPlayerPositionCached(player1, player1Rb);
-            Vector3 p2Pos = GetPlayerPositionCached(player2, player2Rb);
-            Vector3 midpoint = (p1Pos + p2Pos) * 0.5f;
+            Vector3 midpoint = (player1.position + player2.position) * 0.5f;
             targetPosition = new Vector3(midpoint.x, midpoint.y, mainCamera.transform.position.z);
             
             // Auto zoom để fit cả 2 player
-            float distance = Vector2.Distance(p1Pos, p2Pos);
+            float distance = Vector2.Distance(player1.position, player2.position);
             targetZoom = Mathf.Clamp(distance * 0.5f + zoomPadding, minZoom, maxZoom);
         }
         
@@ -258,79 +146,19 @@ public class DynamicCameraController : MonoBehaviour
             targetPosition = ApplyBounds(targetPosition);
         }
         
-        // Smooth camera movement với It Takes Two style transition
-        if (isTransitioning)
-        {
-            // Trong quá trình transition, sử dụng smooth lerp với easing
-            float t = transitionTimer / mergeTransitionDuration;
-            // Smoother step easing (quintic) cho cảm giác mượt mà hơn
-            float smoothT = SmootherStep(t);
-            
-            // Lerp mượt từ start position đến target
-            mainCamera.transform.position = Vector3.Lerp(transitionStartPos, targetPosition, smoothT);
-            mainCamera.orthographicSize = Mathf.Lerp(transitionStartZoom, targetZoom, smoothT);
-        }
-        else
-        {
-            // Normal smooth follow sau khi transition xong
-            mainCamera.transform.position = Vector3.SmoothDamp(
-                mainCamera.transform.position,
-                targetPosition,
-                ref currentVelocity,
-                positionSmoothTime
-            );
-            
-            mainCamera.orthographicSize = Mathf.SmoothDamp(
-                mainCamera.orthographicSize,
-                targetZoom,
-                ref currentZoomVelocity,
-                zoomSmoothTime
-            );
-        }
+        mainCamera.transform.position = Vector3.SmoothDamp(
+            mainCamera.transform.position,
+            targetPosition,
+            ref positionVelocity,
+            positionSmoothTime
+        );
         
-        lastTargetPosition = targetPosition;
-    }
-    
-    /// <summary>
-    /// Smooth step easing function (Hermite)
-    /// </summary>
-    private float SmoothStep(float t)
-    {
-        t = Mathf.Clamp01(t);
-        return t * t * (3f - 2f * t);
-    }
-    
-    /// <summary>
-    /// Smoother step easing (quintic) - mượt hơn SmoothStep
-    /// </summary>
-    private float SmootherStep(float t)
-    {
-        t = Mathf.Clamp01(t);
-        // 6t^5 - 15t^4 + 10t^3
-        return t * t * t * (t * (t * 6f - 15f) + 10f);
-    }
-
-    // Helper method để lấy position có interpolation (với cached Rigidbody)
-    private Vector3 GetPlayerPositionCached(Transform playerTransform, Rigidbody2D rb)
-    {
-        if (useInterpolation && rb != null)
-        {
-            return rb.position;
-        }
-        return playerTransform.position;
-    }
-    
-    // Helper method cho legacy calls
-    private Vector3 GetPlayerPosition(Transform playerTransform)
-    {
-        if (!useInterpolation) return playerTransform.position;
-        
-        Rigidbody2D rb = playerTransform.GetComponent<Rigidbody2D>();
-        if (rb != null)
-        {
-            return rb.position;
-        }
-        return playerTransform.position;
+        mainCamera.orthographicSize = Mathf.SmoothDamp(
+            mainCamera.orthographicSize,
+            targetZoom,
+            ref zoomVelocity,
+            zoomSmoothTime
+        );
     }
     
     private void UpdateSplitCamera()
@@ -344,10 +172,8 @@ public class DynamicCameraController : MonoBehaviour
         player2Camera.rect = new Rect(0.5f, 0, 0.5f, 1f);
         
         // Follow mỗi player với velocity riêng
-        Vector3 p1Pos = GetPlayerPosition(player1);
-        Vector3 p2Pos = GetPlayerPosition(player2);
-        FollowPlayer(player1Camera, p1Pos, ref player1CamVelocity);
-        FollowPlayer(player2Camera, p2Pos, ref player2CamVelocity);
+        FollowPlayer(player1Camera, player1.position, ref player1CamVelocity);
+        FollowPlayer(player2Camera, player2.position, ref player2CamVelocity);
     }
     
     private void UpdateWipeTransition()
@@ -380,10 +206,8 @@ public class DynamicCameraController : MonoBehaviour
         }
         
         // Follow player trong quá trình transition
-        Vector3 p1Pos = GetPlayerPosition(player1);
-        Vector3 p2Pos = GetPlayerPosition(player2);
-        FollowPlayer(player1Camera, p1Pos, ref player1CamVelocity);
-        FollowPlayer(player2Camera, p2Pos, ref player2CamVelocity);
+        FollowPlayer(player1Camera, player1.position, ref player1CamVelocity);
+        FollowPlayer(player2Camera, player2.position, ref player2CamVelocity);
     }
     
     private void FollowPlayer(Camera cam, Vector3 targetPos, ref Vector3 velocity)
@@ -395,7 +219,6 @@ public class DynamicCameraController : MonoBehaviour
             camPos = ApplyBoundsSplit(camPos, cam);
         }
         
-        // Sử dụng SmoothDamp để mượt và consistent
         cam.transform.position = Vector3.SmoothDamp(
             cam.transform.position,
             camPos,
@@ -404,7 +227,7 @@ public class DynamicCameraController : MonoBehaviour
         );
         
         // Dùng splitCameraZoom để điều chỉnh vùng nhìn
-        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, splitCameraZoom, Time.deltaTime * 5f);
+        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, splitCameraZoom, Time.deltaTime * 2f);
     }
     
     private Vector3 ApplyBounds(Vector3 position)
