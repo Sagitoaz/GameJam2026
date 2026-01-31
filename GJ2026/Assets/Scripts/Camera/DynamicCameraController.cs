@@ -71,6 +71,8 @@ public class DynamicCameraController : MonoBehaviour
         player2Camera.CopyFrom(mainCamera);
         player2Camera.depth = mainCamera.depth + 2;
         player2Camera.enabled = false;
+
+        
     }
     
     private void LateUpdate()
@@ -93,7 +95,7 @@ public class DynamicCameraController : MonoBehaviour
         if (splitTransition <= 0.01f)
         {
             // Hoàn toàn merged
-            UpdateMergedCamera();
+            UpdateMergedCamera(true);
         }
         else if (splitTransition >= 0.99f)
         {
@@ -105,13 +107,18 @@ public class DynamicCameraController : MonoBehaviour
             // Đang transition với wipe effect
             UpdateWipeTransition();
         }
+        UpdateMergedCamera(false);
     }
     
-    private void UpdateMergedCamera()
+    private void UpdateMergedCamera(bool isMerged)
     {
-        mainCamera.enabled = true;
-        player1Camera.enabled = false;
-        player2Camera.enabled = false;
+        if (isMerged)
+        {
+            mainCamera.enabled = true;
+            player1Camera.enabled = false;
+            player2Camera.enabled = false;
+        }
+        
         
         Vector3 targetPosition;
         float targetZoom;

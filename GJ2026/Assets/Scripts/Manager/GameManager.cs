@@ -61,9 +61,35 @@ public class GameManager : Singleton<GameManager>
 
     public void WinGame()
     {
-        UnityEngine.Debug.Log("YOU WIN! Level completed!");
-        // TODO: Xử lý win game logic ở đây
-        // Ví dụ: show UI win, load next level, play victory sound, etc.
-        Time.timeScale = 0f;
+        WinGame("MainMenu");
+    }
+
+    public void WinGame(string targetSceneName)
+    {
+        UnityEngine.Debug.Log($"<color=green>YOU WIN! Loading scene: {targetSceneName}</color>");
+        
+        // Có thể thêm delay, show UI, v.v.
+        StartCoroutine(WinGameRoutine(targetSceneName));
+    }
+
+    private System.Collections.IEnumerator WinGameRoutine(string sceneName)
+    {
+        // Show win UI hoặc effects
+        // TODO: PanelManager.Instance.ShowPanel("WinPanel");
+        
+        yield return new WaitForSeconds(1.5f); // Delay để player thấy
+        
+        // Load scene
+        if (!string.IsNullOrEmpty(sceneName))
+        {
+            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+        }
+        else
+        {
+            // Fallback: reload current scene
+            UnityEngine.SceneManagement.SceneManager.LoadScene(
+                UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex
+            );
+        }
     }
 }

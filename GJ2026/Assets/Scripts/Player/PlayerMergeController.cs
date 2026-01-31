@@ -94,6 +94,10 @@ public class PlayerMergeSplitController : MonoBehaviour
         _rbPlayer1.simulated = false;
         _rbPlayer2.simulated = false;
 
+        // Tạo dư ảnh từ 2 player khi merge và tắt trail
+        _player1.PlayMergeSplitEffect();
+        _player2.PlayMergeSplitEffect();
+
         while (Vector2.Distance(_player1.transform.position, midpoint) >= _diagonal)
         {
             float step = _mergeSpeed * Time.deltaTime;
@@ -116,6 +120,10 @@ public class PlayerMergeSplitController : MonoBehaviour
         GameManager.Instance.CurrentGameMode = _playerMerged;
         GameManager.Instance.CurrentGameMode.transform.position = midpoint;
         GameManager.Instance.CurrentGameMode.SetShow();
+
+        // Tắt trail renderer khi đã merged
+        var vfx = _playerMerged.GetComponent<PlayerVFX>();
+        if (vfx != null) vfx.EnableTrail(false);
 
         _state = MergeState.Merged;
     }
@@ -160,11 +168,18 @@ public class PlayerMergeSplitController : MonoBehaviour
 
         ShowSinglePlayers(centerPos, false); // false = dọc
 
+        // Tạo dư ảnh từ 2 player khi split
+        _player1.PlayMergeSplitEffect();
+        _player2.PlayMergeSplitEffect();
+
         Player topPlayer = _player1.transform.position.y >= _player2.transform.position.y ? _player1 : _player2;
         Player bottomPlayer = topPlayer == _player1 ? _player2 : _player1;
         
         topPlayer.ApplyKnockbackNoGravity(Vector2.up * _splitForceVertical, _splitNoGravityDuration);
         bottomPlayer.ApplyKnockbackNoGravity(Vector2.down * _splitForceVertical * 0.5f, _splitNoGravityDuration);
+
+        // Bật lại trail sau khi bay xong
+        StartCoroutine(EnableTrailAfterDelay(_splitNoGravityDuration));
     }
 
     private void SplitHorizontal()
@@ -176,6 +191,10 @@ public class PlayerMergeSplitController : MonoBehaviour
         GameManager.Instance.PlayerMode = PlayerMode.None;
 
         ShowSinglePlayers(centerPos, true); // true = ngang
+
+        // Tạo dư ảnh từ 2 player khi split
+        _player1.PlayMergeSplitEffect();
+        _player2.PlayMergeSplitEffect();
 
         // Lấy hướng ngang cuối cùng từ player đang merged
         float direction = GameManager.Instance.CurrentGameMode.LastHorizontalDirection;
@@ -190,6 +209,16 @@ public class PlayerMergeSplitController : MonoBehaviour
             _player1.ApplyKnockbackNoGravity(Vector2.right * _splitForceP1, _splitNoGravityDuration);
             _player2.ApplyKnockbackNoGravity(Vector2.left * _splitForceP2, _splitNoGravityDuration);
         }
+
+        // Bật lại trail sau khi bay xong
+        StartCoroutine(EnableTrailAfterDelay(_splitNoGravityDuration));
+    }
+
+    private IEnumerator EnableTrailAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        _player1.EnableTrailAfterSplit();
+        _player2.EnableTrailAfterSplit();
     }
 
 }
