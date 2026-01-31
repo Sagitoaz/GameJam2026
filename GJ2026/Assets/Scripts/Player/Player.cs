@@ -197,4 +197,20 @@ public class Player : MonoBehaviour
             GameManager.Instance.TriggerEndGame();
         }
     }
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.collider.CompareTag("Trap"))
+        {
+            // Disable tất cả player ngay lập tức
+            Player[] allPlayers = FindObjectsByType<Player>(FindObjectsSortMode.None);
+            foreach (Player p in allPlayers)
+            {
+                if (p.State == PlayerState.Control)
+                {
+                    p.SetDead();
+                }
+            }
+            GameManager.Instance.TriggerEndGame();
+        }
+    }
 }

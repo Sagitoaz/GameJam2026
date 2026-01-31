@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioManager : Singleton<AudioManager>
 {
@@ -105,5 +106,10 @@ public class AudioManager : Singleton<AudioManager>
         {
             if (!musicSource.isPlaying) musicSource.Play();
         }
+    }
+    [ContextMenu("Test Restart")]
+    public void TestRestart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
