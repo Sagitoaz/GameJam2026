@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] private bool canShow;
     [SerializeField] private PlayerAfterImageVFX afterImageVFX;
 
-    
+    private PlayerVFX vfx;
     private SpriteRenderer sprite;
     private Rigidbody2D rb;
     private BoxCollider2D col;
@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
+        vfx = GetComponent<PlayerVFX>();
     }
 
     private void Start()
@@ -137,6 +138,33 @@ public class Player : MonoBehaviour
         sprite.enabled = true;
         rb.linearVelocity = Vector2.zero;
         rb.gravityScale = 3f;
+    }
+
+    /// <summary>
+    /// Phát hiệu ứng after image khi merge/split và tắt trail
+    /// </summary>
+    public void PlayMergeSplitEffect()
+    {
+        if (afterImageVFX != null)
+        {
+            afterImageVFX.PlayJumpAfterImage();
+        }
+        
+        if (vfx != null)
+        {
+            vfx.EnableTrail(false);
+        }
+    }
+
+    /// <summary>
+    /// Bật lại trail sau khi split
+    /// </summary>
+    public void EnableTrailAfterSplit()
+    {
+        if (vfx != null)
+        {
+            vfx.EnableTrail(true);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D other)

@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 38b6aad694dbe0b4ca1d895e94b3fcd6
+guid: 302cec12b6acee24db8205705cc494e8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6291704387788904276
-    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131004835_0"
-  - first:
-      213: -3395565830958541873
-    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131004835_1"
+      213: 3595626232673693856
+    second: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131100653_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -142,45 +139,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131004835_0"
+      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131100653_0"
       rect:
         serializedVersion: 2
-        x: 197
-        y: 744
-        width: 814
-        height: 242
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ca86316b1306fa8a0800000000000000
-      internalID: -6291704387788904276
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131004835_1"
-      rect:
-        serializedVersion: 2
-        x: 448
-        y: 731
-        width: 317
-        height: 257
+        x: 597
+        y: 63
+        width: 717
+        height: 956
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d8e28e515c7dd244ebb23d5663b50481
-      internalID: -3395565830958541873
+      spriteID: 0a07797120b36e130800000000000000
+      internalID: 3595626232673693856
       vertices: []
       indices: 
       edges: []
@@ -189,7 +164,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2058d7bcdcf202f4ea76fea622992ddb
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -199,8 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131004835_0": -6291704387788904276
-      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131004835_1": -3395565830958541873
+      "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131100653_0": 3595626232673693856
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

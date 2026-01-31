@@ -127,6 +127,18 @@ public class PlayerVFX : MonoBehaviour
     }
 
     /// <summary>
+    /// Bật/tắt trail ngay lập tức
+    /// </summary>
+    public void EnableTrail(bool enable)
+    {
+        enableTrailOnMove = enable;
+        if (trailRenderer != null)
+        {
+            trailRenderer.emitting = enable;
+        }
+    }
+
+    /// <summary>
     /// Xóa trail hiện tại
     /// </summary>
     public void ClearTrail()
