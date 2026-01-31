@@ -911,6 +911,7 @@ MonoBehaviour:
   normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
+  isPressed: 0
 --- !u!61 &175232260
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2995,6 +2996,7 @@ MonoBehaviour:
   normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
+  isPressed: 0
 --- !u!1 &679449117
 GameObject:
   m_ObjectHideFlags: 0
@@ -3329,6 +3331,7 @@ MonoBehaviour:
   normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
+  isPressed: 0
 --- !u!61 &710419535
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4282,7 +4285,7 @@ MonoBehaviour:
   openCloseMode: 0
   openDuration: 3
   doorVisual: {fileID: 971109114}
-  openOffset: {x: 0, y: -5, z: 0}
+  openOffset: {x: 0, y: -7, z: 0}
   animationSpeed: 2
 --- !u!61 &971109116
 BoxCollider2D:
@@ -4847,6 +4850,7 @@ MonoBehaviour:
   normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
+  isPressed: 0
 --- !u!61 &1102937085
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -7165,6 +7169,7 @@ MonoBehaviour:
   normalColorP2: {r: 1, g: 0.4, b: 0.3, a: 1}
   pressedColor: {r: 0, g: 1, b: 0, a: 1}
   pressedYOffset: -0.1
+  isPressed: 0
 --- !u!61 &1657805388
 BoxCollider2D:
   m_ObjectHideFlags: 0
