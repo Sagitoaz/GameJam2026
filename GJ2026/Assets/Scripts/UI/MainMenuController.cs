@@ -24,7 +24,7 @@ public class MainMenuController : MonoBehaviour
     private bool isStarting = false;      
     private RectTransform parentRect;     // Để lấy kích thước màn hình
 
-    void Start()
+    private void Start()
     {
         // Lưu vị trí gốc
         if (p1Transform != null) {
@@ -36,7 +36,7 @@ public class MainMenuController : MonoBehaviour
         if (loadingPanel != null) loadingPanel.SetActive(false);
     }
 
-    void Update()
+    private void Update()
     {
         if (isStarting) return;
 
@@ -54,6 +54,21 @@ public class MainMenuController : MonoBehaviour
     {
         if (isStarting) return;
         StartCoroutine(SequenceStartGame());
+    }
+
+    public void OnClickSetting()
+    {
+        PanelManager.Instance.OpenPanel(GameConfig.PANEL_SETTING);
+    }
+    
+    public void OnClickManual()
+    {
+        PanelManager.Instance.OpenPanel(GameConfig.PANEL_MANUAL);
+    }
+
+    public void OnClickQuit()
+    {
+        Application.Quit();
     }
     
     public void OnStartHoverEnter() { if (!isStarting) isHovering = true; }
