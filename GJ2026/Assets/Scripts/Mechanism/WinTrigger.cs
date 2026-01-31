@@ -17,6 +17,8 @@ public class WinTrigger : MonoBehaviour
     [SerializeField] private ParticleSystem winParticles;
     [SerializeField] private AudioClip winSound;
 
+    [SerializeField] private GameObject winPanel;
+
     private HashSet<Player> playersInTrigger = new HashSet<Player>();
     private bool hasTriggered = false;
 
@@ -107,6 +109,7 @@ public class WinTrigger : MonoBehaviour
 
     private System.Collections.IEnumerator LoadSceneDelayed()
     {
+        winPanel?.SetActive(true);
         yield return new WaitForSeconds(1f);
         SceneManager.LoadScene(targetSceneName);
     }
