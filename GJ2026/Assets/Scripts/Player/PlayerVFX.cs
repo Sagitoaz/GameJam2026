@@ -8,21 +8,8 @@ public class PlayerVFX : MonoBehaviour
     [SerializeField] private Vector3 trailOffset = Vector3.zero; // Offset từ player
     [SerializeField] private bool enableTrailOnMove = true;
     [SerializeField] private float minSpeedForTrail = 0.5f;
-
-    [Header("Movement Particles")]
-    [SerializeField] private ParticleSystem moveParticles;
-    [SerializeField] private float minSpeedForParticles = 1f;
-    [SerializeField] private bool emitWhileMoving = true;
-
-    [Header("Jump/Landing Particles")]
-    [SerializeField] private ParticleSystem jumpParticles;
-    [SerializeField] private ParticleSystem landParticles;
-
-    [Header("Idle/Float Particles")]
-    [SerializeField] private ParticleSystem idleParticles; // Hiệu ứng bay lơ lửng cho hồn ma
     
     private Rigidbody2D rb;
-    private bool wasGrounded = true;
 
     private void Awake()
     {
@@ -61,32 +48,21 @@ public class PlayerVFX : MonoBehaviour
         }
     }
 
-    private void Start()
+    private void Update()
     {
-        // Bật idle particles nếu có
-        if (idleParticles != null && !idleParticles.isPlaying)
-        {
+        if (rb == null) return;
+
+        // Lấy tốc độ ngang (không tính vertical)
+        float horizontalSpeed = Mathf.Abs(rb.linearVelocity.x);
+
+        // Xử lý trail - chỉ khi di chuyển ngang
+        HandleTrail(horizontalSpeed);
         
         // Update trail position nếu có offset mới
         if (trailSpawnPoint != null && trailSpawnPoint.parent == transform)
         {
             trailSpawnPoint.localPosition = trailOffset;
         }
-            idleParticles.Play();
-        }
-    }
-
-    private void Update()
-    {
-        if (rb == null) return;
-
-        float speed = rb.linearVelocity.magnitude;
-
-        // Xử lý trail
-        HandleTrail(speed);
-
-        // Xử lý movement particles
-        HandleMovementParticles(speed);
     }
 
     private void HandleTrail(float speed)
@@ -101,60 +77,6 @@ public class PlayerVFX : MonoBehaviour
         {
             trailRenderer.emitting = false;
         }
-    }
-
-    private void HandleMovementParticles(float speed)
-    {
-        if (moveParticles == null || !emitWhileMoving) return;
-
-        if (speed >= minSpeedForParticles)
-        {
-            if (!moveParticles.isPlaying)
-            {
-                moveParticles.Play();
-            }
-        }
-        else
-        {
-            if (moveParticles.isPlaying)
-            {
-                moveParticles.Stop();
-            }
-        }
-    }
-
-    /// <summary>
-    /// Gọi khi player nhảy
-    /// </summary>
-    public void PlayJumpEffect()
-    {
-        if (jumpParticles != null)
-        {
-            jumpParticles.Play();
-        }
-    }
-
-    /// <summary>
-    /// Gọi khi player chạm đất
-    /// </summary>
-    public void PlayLandEffect()
-    {
-        if (landParticles != null)
-        {
-            landParticles.Play();
-        }
-    }
-
-    /// <summary>
-    /// Kiểm tra landing để tự động play effect
-    /// </summary>
-    public void CheckLanding(bool isGrounded)
-    {
-        if (isGrounded && !wasGrounded)
-        {
-            PlayLandEffect();
-        }
-        wasGrounded = isGrounded;
     }
 
     private void SetupDefaultTrail()
@@ -173,12 +95,12 @@ public class PlayerVFX : MonoBehaviour
         trailRenderer.sortingLayerName = "Default";
         trailRenderer.sortingOrder = -1; // Âm để nằm sau player
         
-        // Gradient màu ma mị
+        // Gradient màu trắng xanh nhạt
         Gradient gradient = new Gradient();
         gradient.SetKeys(
             new GradientColorKey[] { 
-                new GradientColorKey(new Color(0.5f, 0.8f, 1f, 1f), 0.0f), // Xanh nhạt
-                new GradientColorKey(new Color(0.3f, 0.5f, 0.8f, 1f), 1.0f)  // Xanh đậm
+                new GradientColorKey(new Color(0.9f, 0.95f, 1f, 1f), 0.0f), // Trắng xanh nhạt
+                new GradientColorKey(new Color(0.7f, 0.85f, 0.95f, 1f), 1.0f)  // Xanh nhạt hơn
             },
             new GradientAlphaKey[] { 
                 new GradientAlphaKey(1f, 0.0f), 
@@ -215,3 +137,4 @@ public class PlayerVFX : MonoBehaviour
         }
     }
 }
+

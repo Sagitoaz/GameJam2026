@@ -14,7 +14,9 @@ GameObject:
   - component: {fileID: 7578386426656220480}
   - component: {fileID: 1244014977843984266}
   - component: {fileID: 3893872383147107753}
-  m_Layer: 0
+  - component: {fileID: 3824157335442579981}
+  - component: {fileID: 8464515144518695911}
+  m_Layer: 8
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -186,9 +188,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   moveSpeed: 5
+  flipSprite: 1
   jumpForce: 12
   groundDetector: {fileID: 3893872383147107753}
   canShow: 1
+  afterImageVFX: {fileID: 3824157335442579981}
 --- !u!114 &3893872383147107753
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,6 +212,54 @@ MonoBehaviour:
     m_Bits: 64
   _offsetY: 0.04
   _drawGizmos: 1
+--- !u!114 &3824157335442579981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3245453639238596871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4880d003f7199cf489d7309f0b1bf967, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAfterImageVFX
+  sourceSprite: {fileID: 4420806748182956868}
+  pool: {fileID: 0}
+  minTimeBetween: 0.04
+  minDistanceX: 0.03
+  minDistanceY: 0.06
+  emitOnJump: 1
+  emitOnDash: 0
+  burstCount: 6
+  burstDuration: 0.12
+  minDistance: 0.05
+  sortingOrderOffset: -1
+  tint: {r: 0.95, g: 0.98, b: 1, a: 0.15686275}
+  overrideTint: 1
+--- !u!114 &8464515144518695911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3245453639238596871}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 784c9aa898592d346a65d7c7fd51a43e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerVFX
+  trailRenderer: {fileID: 0}
+  trailSpawnPoint: {fileID: 0}
+  trailOffset: {x: 0, y: 0, z: 0}
+  enableTrailOnMove: 1
+  minSpeedForTrail: 0.5
+  moveParticles: {fileID: 0}
+  minSpeedForParticles: 1
+  emitWhileMoving: 1
+  jumpParticles: {fileID: 0}
+  landParticles: {fileID: 0}
+  idleParticles: {fileID: 0}
 --- !u!1 &3565657302685842796
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,7 +269,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 680541677578912537}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -250,7 +302,7 @@ GameObject:
   - component: {fileID: 882370836085174554}
   - component: {fileID: 4420806748182956868}
   - component: {fileID: 6638334546531265830}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: VisualRoot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -267,7 +319,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6044436493803270888}
@@ -321,8 +373,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0, g: 1, b: 0.81208205, a: 1}
+  m_Sprite: {fileID: 3640896570199174592, guid: 1d19bc91dac66b54abd55cb801a557c8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -341,7 +393,7 @@ Animator:
   m_GameObject: {fileID: 5397642794066895605}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 407440aa32e84af43888982238409f15, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

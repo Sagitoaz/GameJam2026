@@ -14,11 +14,12 @@ public class Player : MonoBehaviour
     [Header("References")]
     [SerializeField] private GroundDetector groundDetector;
     [SerializeField] private bool canShow;
+    [SerializeField] private PlayerAfterImageVFX afterImageVFX;
+
     
     private SpriteRenderer sprite;
     private Rigidbody2D rb;
     private BoxCollider2D col;
-    private PlayerVFX vfx;
     private Vector2 moveInput;
     private bool isKnockback;
     private float lastHorizontalDirection = 1f; // 1 = phải, -1 = trái, mặc định là phải
@@ -33,7 +34,6 @@ public class Player : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<BoxCollider2D>();
         sprite = GetComponentInChildren<SpriteRenderer>();
-        vfx = GetComponent<PlayerVFX>();
     }
 
     private void Start()
@@ -60,12 +60,7 @@ public class Player : MonoBehaviour
         if (context.performed && groundDetector.IsGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
-            
-            // Play jump effect
-            if (vfx != null)
-            {
-                vfx.PlayJumpEffect();
-            }
+            afterImageVFX?.PlayJumpAfterImage();
         }
     }
 
@@ -75,15 +70,9 @@ public class Player : MonoBehaviour
         
         groundDetector.Check();
         
-        // Check landing effect
-        if (vfx != null)
-        {
-            vfx.CheckLanding(groundDetector.IsGrounded);
-        }
-        
         float targetSpeed = moveInput.x * moveSpeed;
         rb.linearVelocity = new Vector2(moveInput.x * moveSpeed, rb.linearVelocity.y);
-        
+
         // Flip sprite theo hướng di chuyển
         if (flipSprite && Mathf.Abs(moveInput.x) > 0.1f)
         {
