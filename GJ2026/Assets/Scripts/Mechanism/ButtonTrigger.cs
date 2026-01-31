@@ -21,12 +21,21 @@ public enum ButtonMode
     Special   // Nút đặc biệt: rời ra là bật lại
 }
 
+public enum ButtonPressDirection
+{
+    Down,   // Lún xuống (Vector3.down)
+    Up,     // Lún lên (Vector3.up)
+    Left,   // Lún sang trái (Vector3.left)
+    Right   // Lún sang phải (Vector3.right)
+}
+
 public class ButtonTrigger : MonoBehaviour
 {
     [Header("Button Settings")]
     [SerializeField] private ButtonType buttonType = ButtonType.SinglePlayer;
     [SerializeField] private PlayerRequirement playerRequirement = PlayerRequirement.Any;
     [SerializeField] private ButtonMode buttonMode = ButtonMode.Normal;
+    [SerializeField] private ButtonPressDirection pressDirection = ButtonPressDirection.Down;
     [SerializeField] private string eventName = "Button01_Pressed";
     [SerializeField] private bool requireSeparatePlayers = true;
 
@@ -171,11 +180,29 @@ public class ButtonTrigger : MonoBehaviour
 
         if (isPressed)
         {
-            transform.position = originalPosition + Vector3.up * pressedYOffset;
+            Vector3 pressOffset = GetPressOffset();
+            transform.position = originalPosition + pressOffset;
         }
         else
         {
             transform.position = originalPosition;
+        }
+    }
+
+    private Vector3 GetPressOffset()
+    {
+        switch (pressDirection)
+        {
+            case ButtonPressDirection.Down:
+                return Vector3.down * Mathf.Abs(pressedYOffset);
+            case ButtonPressDirection.Up:
+                return Vector3.up * Mathf.Abs(pressedYOffset);
+            case ButtonPressDirection.Left:
+                return Vector3.left * Mathf.Abs(pressedYOffset);
+            case ButtonPressDirection.Right:
+                return Vector3.right * Mathf.Abs(pressedYOffset);
+            default:
+                return Vector3.down * Mathf.Abs(pressedYOffset);
         }
     }
 
