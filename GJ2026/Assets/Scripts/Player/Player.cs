@@ -15,6 +15,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GroundDetector groundDetector;
     [SerializeField] private bool canShow;
     [SerializeField] private PlayerAfterImageVFX afterImageVFX;
+    [SerializeField] private GameObject losePanel;
 
     private PlayerVFX vfx;
     private SpriteRenderer sprite;
@@ -193,7 +194,6 @@ public class Player : MonoBehaviour
                     p.SetDead();
                 }
             }
-            
             GameManager.Instance.TriggerEndGame();
         }
     }

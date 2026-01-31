@@ -11,7 +11,6 @@ public class CheckpointManager : Singleton<CheckpointManager>
     [Header("Checkpoint Settings")]
     [SerializeField] private Vector3 defaultSpawnPosition = Vector3.zero;
     [SerializeField] private float respawnDelay = 1f;
-    [SerializeField] private GameObject loseScreenUI;
 
     private Vector3 currentCheckpointPosition;
     private bool hasCheckpoint = false;
@@ -70,7 +69,6 @@ public class CheckpointManager : Singleton<CheckpointManager>
     private System.Collections.IEnumerator RespawnRoutine()
     {
         // Fade out hoặc effect (có thể thêm sau)
-        loseScreenUI.SetActive(true);
         yield return new WaitForSeconds(respawnDelay);
 
         // Reset game state
@@ -116,7 +114,6 @@ public class CheckpointManager : Singleton<CheckpointManager>
         AudioListener.pause = false;
 
         Debug.Log("<color=green>[Checkpoint] Đã respawn!</color>");
-        loseScreenUI.SetActive(false);
     }
 
     /// <summary>

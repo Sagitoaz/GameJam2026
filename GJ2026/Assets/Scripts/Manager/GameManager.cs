@@ -61,7 +61,7 @@ public class GameManager : Singleton<GameManager>
 
     public void WinGame()
     {
-        WinGame("MainMenu");
+        WinGame("LevelSelect");
     }
 
     public void WinGame(string targetSceneName)
@@ -82,7 +82,7 @@ public class GameManager : Singleton<GameManager>
         // Load scene
         if (!string.IsNullOrEmpty(sceneName))
         {
-            UnityEngine.SceneManagement.SceneManager.LoadScene(sceneName);
+            UnityEngine.SceneManagement.SceneManager.LoadScene("LevelSelect");
         }
         else
         {

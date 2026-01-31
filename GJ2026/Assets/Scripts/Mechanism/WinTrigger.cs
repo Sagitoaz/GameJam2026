@@ -6,7 +6,7 @@ public class WinTrigger : MonoBehaviour
 {
     [Header("Win Condition")]
     [SerializeField] private bool requireBothPlayers = true;
-    [SerializeField] private string targetSceneName = "MainMenu";
+    [SerializeField] private string targetSceneName = "LevelSelect";
 
     [Header("Visual Feedback")]
     [SerializeField] private SpriteRenderer spriteRenderer;
@@ -17,6 +17,7 @@ public class WinTrigger : MonoBehaviour
     [SerializeField] private ParticleSystem winParticles;
     [SerializeField] private AudioClip winSound;
 
+    [SerializeField] private GameObject losePanel;
     [SerializeField] private GameObject winPanel;
 
     private HashSet<Player> playersInTrigger = new HashSet<Player>();
@@ -108,6 +109,7 @@ public class WinTrigger : MonoBehaviour
 
         if (GameManager.Instance != null)
         {
+            winPanel?.SetActive(true);
             GameManager.Instance.WinGame(targetSceneName);
         }
         else

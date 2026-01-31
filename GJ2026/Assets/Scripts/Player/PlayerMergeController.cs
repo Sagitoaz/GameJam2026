@@ -121,9 +121,9 @@ public class PlayerMergeSplitController : MonoBehaviour
         GameManager.Instance.CurrentGameMode.transform.position = midpoint;
         GameManager.Instance.CurrentGameMode.SetShow();
 
-        // Tắt trail renderer khi đã merged
+        // Bật trail renderer cho merged player
         var vfx = _playerMerged.GetComponent<PlayerVFX>();
-        if (vfx != null) vfx.EnableTrail(false);
+        if (vfx != null) vfx.EnableTrail(true);
 
         _state = MergeState.Merged;
     }
