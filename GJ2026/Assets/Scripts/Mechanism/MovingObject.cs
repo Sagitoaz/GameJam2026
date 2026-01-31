@@ -1,5 +1,3 @@
-using NUnit.Framework.Interfaces;
-using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class MovingObject : MonoBehaviour

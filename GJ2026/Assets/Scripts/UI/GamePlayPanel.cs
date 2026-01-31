@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class GamePlayPanel : Panel
@@ -7,6 +6,7 @@ public class GamePlayPanel : Panel
     [SerializeField] private PausePanel PausePanel;
     public void OnClickPauseButton()
     {
+        Debug.Log("Pause");
         AudioManager.Instance.PlaySFX(AudioManager.Instance.click);
         PausePanel.gameObject.SetActive(true);
         Time.timeScale = 0f;

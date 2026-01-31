@@ -105,9 +105,9 @@ public class GameManager : Singleton<GameManager>
     {
         yield return new WaitForSeconds(1.5f);
         
-        if (!string.IsNullOrEmpty(sceneName))
+        if (!string.IsNullOrEmpty("LevelSelect"))
         {
-            SceneManager.LoadScene(sceneName);
+            SceneManager.LoadScene("LevelSelect");
         }
         else
         {
