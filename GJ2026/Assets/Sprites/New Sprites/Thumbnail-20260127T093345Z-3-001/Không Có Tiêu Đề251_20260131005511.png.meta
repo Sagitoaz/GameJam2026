@@ -178,9 +178,9 @@ TextureImporter:
       name: "Kh\xF4ng C\xF3 Ti\xEAu \u0110\u1EC1251_20260131005511_0"
       rect:
         serializedVersion: 2
-        x: 98
+        x: 119
         y: 743
-        width: 1054
+        width: 1033
         height: 337
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -205,7 +205,7 @@ TextureImporter:
         width: 339
         height: 289
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
