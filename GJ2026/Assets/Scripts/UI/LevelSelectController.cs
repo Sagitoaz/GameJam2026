@@ -21,12 +21,14 @@ public class LevelSelectController : MonoBehaviour
     public void SelectMap(string mapName)
     {
         if (isLoading) return;
+        
         StartCoroutine(LoadMapRoutine(mapName));
     }
 
     public void BackToMenu()
     {
         if (isLoading) return;
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.click);
         SceneManager.LoadScene("Intro");
     }
 
@@ -42,6 +44,7 @@ public class LevelSelectController : MonoBehaviour
     }
 
     public void OnClickLetterButton() {
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.click);
         letterPanel.SetActive(true);
     }
 }

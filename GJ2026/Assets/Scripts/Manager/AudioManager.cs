@@ -9,6 +9,8 @@ public class AudioManager : Singleton<AudioManager>
     public bool _isMutedSFX = false;
     public AudioClip click;
 
+    public AudioClip jump;
+
     public override void Awake()
     {
         PlayerPrefs.DeleteAll();

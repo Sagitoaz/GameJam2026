@@ -28,6 +28,7 @@ public class LevelButton : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(sceneName))
         {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.click);
             StartCoroutine(LoadSceneWithLoading());
         }
     }

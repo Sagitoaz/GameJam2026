@@ -52,6 +52,7 @@ public class MainMenuController : MonoBehaviour
     public void OnClickStart()
     {
         if (isStarting) return;
+        AudioManager.Instance.PlaySFX(AudioManager.Instance.click);
         StartCoroutine(SequenceStartGame());
     }
 

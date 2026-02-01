@@ -149,7 +149,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: d506de9aafd20a54a9fbe7e2a2cde39b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.185
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1838,6 +1838,7 @@ MonoBehaviour:
   _isMutedMusic: 0
   _isMutedSFX: 0
   click: {fileID: 8300000, guid: 30b950f177f0bd04e87fe56e8d20154b, type: 3}
+  jump: {fileID: 8300000, guid: 53b216fe7dc795949aaee4f24cbc2fa2, type: 3}
 --- !u!4 &855211037
 Transform:
   m_ObjectHideFlags: 0

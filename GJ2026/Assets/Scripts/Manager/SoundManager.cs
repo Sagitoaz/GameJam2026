@@ -7,6 +7,8 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource sfxSource;
     
+
+    
     [Header("Volume Settings")]
     [SerializeField] private float masterVolume = 1f;
     [SerializeField] private float musicVolume = 0.7f;

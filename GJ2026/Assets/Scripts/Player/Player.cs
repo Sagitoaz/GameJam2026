@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
         if (context.performed && groundDetector.IsGrounded)
         {
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpForce);
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.jump);
             afterImageVFX?.PlayJumpAfterImage();
         }
     }
